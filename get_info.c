@@ -15,7 +15,7 @@ int main(void) {
     }
 
     else {
-        printf("[error] curl init failed\n");
+        printf("[error] curl init failed\n");   // test
         return 1;
     }
 
