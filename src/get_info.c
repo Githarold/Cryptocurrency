@@ -1,0 +1,17 @@
+#include "get_info.h"
+
+void get_info(void) {
+    CURL *curl = curl_easy_init();
+
+    if(curl) {
+        CURLcode res;
+        curl_easy_setopt(curl, CURLOPT_URL, URL);
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+    }
+
+    else {
+        printf("[error] curl init failed\n");   // test
+        return 1;
+    }
+}
