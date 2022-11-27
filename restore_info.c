@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "BTC.h"
 
 #define BUFF_SIZE 1024
 
-//extern char URL[50];
+extern char URL[100];
 
 void call_info(char *a) {
     FILE *fp = popen("./get_info", "r");
@@ -20,7 +21,7 @@ void call_info(char *a) {
 }
 
 int main(void) {
-    char URL[50] = "https://api.bithumb.com/public/ticker/";
+    // char URL[50] = "https://api.bithumb.com/public/ticker/";
     char ticker[10] = "";
     char info[BUFF_SIZE] = {0};
     char *price = malloc(BUFF_SIZE);

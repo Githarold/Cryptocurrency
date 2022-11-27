@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <curl/curl.h>
+#include "BTC.h"
 
-extern char URL[50];
+extern char URL[100];
 
 int main(void) {
 
@@ -9,7 +10,7 @@ int main(void) {
 
     if(curl) {
         CURLcode res;
-        curl_easy_setopt(curl, CURLOPT_URL, URL);
+        curl_easy_setopt(curl, CURLOPT_URL, URL[100]);
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
     }
