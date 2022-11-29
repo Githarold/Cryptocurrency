@@ -8,7 +8,7 @@ TARGET = YoungAndRich
 CFLAGS += `sdl2-config --cflags` -g -lefence
 
 # Add linking options
-LDFLAGS += `sdl2-config --libs` -lSDL2_mixer -lSDL2_image -lSDL2_ttf -lm -lcurl
+LDFLAGS += `sdl2-config --libs` -lSDL2_mixer -lSDL2_image -lSDL2_ttf -lm -lcurl -ljson-c
 
 # Source files' list: files with extension .c
 # For example, main.c draw.c init.c input.c utils.c
