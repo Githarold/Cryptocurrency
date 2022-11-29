@@ -12,18 +12,18 @@ void make_url(char *url) {
 
 void get_info(const char* url) {
     FILE *fp = fopen("result.json", "w");
-    //fp = fopen("result.json", "w");
+    // fp = fopen("result.json", "w");
 
     if (fp == NULL) {
         printf("fopen ERR\n");
-        exit(1);
+        return;
     }
 
     CURL *curl = curl_easy_init();
 
     if (!curl) {
         printf("curl ERR\n");
-        exit(1);
+        return;
     }
 
     printf("url : %s", url);
@@ -43,17 +43,13 @@ void get_info(const char* url) {
     // json_object *result = json_tokener_parse(buff);
 
     json_object *status, *data, *price, *fluctuate_rate;
-    status = json_object_object_get(result, "status");
-    // if (!strncmp(status, "5500", 4)) {
-    //     printf("상장 코인이 아닙니다.\n");
-    //     exit(1);
-    // }
 
     data = json_object_object_get(result, "data");
     price = json_object_object_get(data, "closing_price");
     fluctuate_rate = json_object_object_get(data, "fluctate_rate_24H");
-    printf("price : %s 원\n", json_object_get_string(price));
-    printf("변동률 : %s %%\n", json_object_get_string(fluctuate_rate));
+
+    printf("price : %s원\n", json_object_get_string(price));
+    printf("변동률 : %s%%\n", json_object_get_string(fluctuate_rate));
 
     return;
 }
