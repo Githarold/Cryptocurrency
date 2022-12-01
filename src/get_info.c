@@ -1,3 +1,8 @@
+/**
+ @file      get_info.c
+ @brief     url 생성 및 데이터 수신 함수를 정의한 소스 파일
+ @author    이승헌
+ */
 #include "get_info.h"
 
 void make_url(char *url) {

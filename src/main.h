@@ -1,6 +1,6 @@
 /**
  @file      main.h
- @brief     데이터타입 및 상수 정의
+ @brief     각 모듈 헤더 파일 include 및 전역 변수 선언
  @author    이승헌
 */
 
@@ -9,10 +9,14 @@
 
 #include "defs.h"
 
+#include "init.h"
+#include "input.h"
 #include "get_info.h"
 
 #define URL "https://api.bithumb.com/public/ticker/"
 
 /* 사용하는 전역 변수 */
+Data data;
+App app;
 
 #endif
