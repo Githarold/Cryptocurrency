@@ -36,8 +36,6 @@ void get_info(const char* url) {
 
     fclose(fp);
 
-    printf("url : %s", url);      // debug
-
     json_object *result = json_object_from_file("result.json");
     json_object *data, *price, *fluctuate_rate;
 
