@@ -1,10 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <curl/curl.h>
-#include <json-c/json.h>
+/**
+ @file      get_info.h
+ @brief     데이터 수신부
+ @author    이승헌
+*/
 
-#define BUFF_SIZE 1024
+#ifndef GETINFO_H
+#define GETINFO_H
 
-void make_url(char *);
-void get_info(const char*);
+#include "defs.h"
+
+#endif

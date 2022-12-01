@@ -5,7 +5,7 @@
 #include <string.h>
 #include <json-c/json.h>
 
-char URL[BUFSIZE] = "https://api.bithumb.com/public/ticker/btc";
+char URL[BUFSIZE] = "https://api.bithumb.com/public/ticker/BTC_KRW";
 
 int main(void) {
     FILE *fp;
