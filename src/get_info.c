@@ -9,7 +9,7 @@ void make_url(char *url) {
     char ticker[10] = "";
 
     printf("What's ticker? : ");
-    fgets(ticker, 10, stdin);
+    scanf(" %s", ticker);
     strcat(url, ticker);
 
     return;
@@ -37,14 +37,47 @@ void get_info(const char* url) {
     fclose(fp);
 
     json_object *result = json_object_from_file("result.json");
-    json_object *data, *price, *fluctuate_rate;
+    json_object *data, *price, *fluctuate_rate, *trade_volume;
 
     data = json_object_object_get(result, "data");
     price = json_object_object_get(data, "closing_price");
     fluctuate_rate = json_object_object_get(data, "fluctate_rate_24H");
+    trade_volume = json_object_object_get(data, "acc_trade_value");
 
-    printf("price : %s원\n", json_object_get_string(price));
-    printf("변동률 : %s%%\n", json_object_get_string(fluctuate_rate));
+
+    //########################3
+
+    coin_data.price = atof(json_object_get_string(price));                  // coin_data 구조체의 멤버를 실시간 값으로 계속 초기화 + 실수형 데이터 타입으로 변환
+    coin_data.fluctate_rate = atof(json_object_get_string(fluctuate_rate));
+    coin_data.trade_volume = atof(json_object_get_string(trade_volume));
+    // printf("가격 : %d원\n변동률 : %.2lf%%\n거래량 : %d원\n\n", coin_data.price, coin_data.fluctate_rate, coin_data.trade_volume);
+
+    if(coin_data.price >= coin_data.ath_1m)     // 고점 갱신할 때 ath_1m 최신화
+    {
+        coin_data.ath_1m = coin_data.price;
+    }
+    if(coin_data.price <= coin_data.atl_1m)     // 저점 갱신할 때 atl_1m 최신화
+    {
+        coin_data.atl_1m = coin_data.price;
+    }
+    if(coin_data.start_price == 0)              // 프로그램 켰을 때 시작가 저장 
+    {
+        coin_data.start_price = coin_data.price;
+    }
+    coef = 450 / coin_data.start_price;
+    
+    coin_data.price_coef = coin_data.price*coef;
+    coin_data.ath_coef = coin_data.ath_1m*coef;
+    // printf("%.1lf\n",(double)SDL_GetTicks()/1000);
+    // if(SDL_GetTicks() == 60)
+    //     {
+            
+    //     }
+
+    
+
+    
+
 
     return;
 }

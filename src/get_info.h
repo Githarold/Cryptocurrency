@@ -8,6 +8,8 @@
 #define GETINFO_H
 
 #include "defs.h"
+extern Data coin_data;
+extern double coef;
 
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.

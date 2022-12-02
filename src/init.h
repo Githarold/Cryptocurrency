@@ -7,11 +7,12 @@
 #define INIT_H
 
 #include "defs.h"
-
-/* main.h에 정의된 전역 변수 사용 */
 extern App app;
 extern Data data;
+extern Entity chart[60];
+extern Entity chart_kkori[60];
 
+/* main.h에 정의된 전역 변수 사용 */
 /**
  @brief 프로그램 수행에 필요한 초기화 과정 수행
 
@@ -55,5 +56,7 @@ void QuitTTF(void);
  @return 리턴 값 없음
 */
 void InitMemorySet(void);
+
+void InitChart(void);
 
 #endif
