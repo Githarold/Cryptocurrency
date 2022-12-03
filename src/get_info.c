@@ -10,7 +10,7 @@ void make_url(char *url) {
 
     printf("What's ticker? : ");
     scanf(" %s", ticker);
-    strcat(url, ticker);
+    strncat(url, ticker, strlen(ticker));
 
     return;
 }
@@ -35,17 +35,17 @@ void get_info(const char* url) {
     curl_easy_cleanup(curl);
 
     fclose(fp);
-
     json_object *result = json_object_from_file("result.json");
     json_object *data, *price, *fluctuate_rate, *trade_volume;
 
-    data = json_object_object_get(result, "data");
-    price = json_object_object_get(data, "closing_price");
-    fluctuate_rate = json_object_object_get(data, "fluctate_rate_24H");
-    trade_volume = json_object_object_get(data, "acc_trade_value");
+    data = json_object_array_get_idx(result, 0);
+    //data = json_object_object_get(result, "[");
+    price = json_object_object_get(data, "trade_price");
+    fluctuate_rate = json_object_object_get(data, "signed_change_rate");
+    trade_volume = json_object_object_get(data, "acc_trade_price_24h");
 
 
-    //########################3
+    //########################
 
     coin_data.price = atof(json_object_get_string(price));                  // coin_data 구조체의 멤버를 실시간 값으로 계속 초기화 + 실수형 데이터 타입으로 변환
     coin_data.fluctate_rate = atof(json_object_get_string(fluctuate_rate));
@@ -73,11 +73,6 @@ void get_info(const char* url) {
     //     {
             
     //     }
-
-    
-
-    
-
 
     return;
 }

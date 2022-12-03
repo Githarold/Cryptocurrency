@@ -1,6 +1,5 @@
 #include "defs.h"
 
-
 extern int check;
 // extern int GREEN[4];
 // extern int RED[4];

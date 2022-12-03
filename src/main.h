@@ -15,7 +15,7 @@
 #include "get_info.h"
 #include "draw_chart.h"
 
-#define URL "https://api.bithumb.com/public/ticker/"
+#define URL "https://api.upbit.com/v1/ticker?markets=KRW-"
 
 /* 사용하는 전역 변수 */
 int check = 60;
