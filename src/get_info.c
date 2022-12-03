@@ -39,7 +39,6 @@ void get_info(const char* url) {
     json_object *data, *price, *fluctuate_rate, *trade_volume;
 
     data = json_object_array_get_idx(result, 0);
-    //data = json_object_object_get(result, "[");
     price = json_object_object_get(data, "trade_price");
     fluctuate_rate = json_object_object_get(data, "signed_change_rate");
     trade_volume = json_object_object_get(data, "acc_trade_price_24h");

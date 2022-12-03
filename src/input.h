@@ -13,6 +13,7 @@
 /* main.h에 정의된 전역 변수 사용 */
 extern App app;
 extern Data data;
+extern int mouse_x, mouse_y;
 
 /**
  @brief 외부 입력을 받아 적절한 동작을 취하도록 한다.
