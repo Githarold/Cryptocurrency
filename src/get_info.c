@@ -64,7 +64,7 @@ void get_info(const char* url) {
     {
         coin_data.start_price = coin_data.price;
     }
-    coef = 450 / coin_data.start_price;
+    coef = (SCREEN_HEIGHT/2) / coin_data.start_price;
     
     coin_data.price_coef = coin_data.price*coef;
     coin_data.ath_coef = coin_data.ath_1m*coef;

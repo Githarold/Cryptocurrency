@@ -21,8 +21,8 @@
 #include "SDL2/SDL_rect.h"
 
 #define BUFF_SIZE 1024      // 문자열 버퍼 크기
-#define SCREEN_WIDTH 1280    // 화면 너비(픽셀)
-#define SCREEN_HEIGHT 960   // 화면 높이(픽셀)
+#define SCREEN_WIDTH 800    // 화면 너비(픽셀)
+#define SCREEN_HEIGHT 600   // 화면 높이(픽셀)
 #define TICK_INTERVAL 60000
 
 
@@ -53,12 +53,12 @@ typedef struct {
 typedef struct {
     double fluctate_rate;    // 최근 24시간 변동률    
     double price;            // 현재(실시간) 가격 정보
-    int trade_volume;     // 00시 기준 거래량
+    int trade_volume;        // 00시 기준 거래량
     double ath_1m;           // ath -> 전고점 , 1분기준 전고점을 의미
     double atl_1m;           // ath -> 전저점 , 1분기준 전자점을 의미
-    double start_price;       // 차트 그릴 때 기준이 될 시작가(프로그램 켰을 때의 그 가격)
-    double price_coef;          // 변환 후 가격
-    double ath_coef;          // 변환 후 가격
+    double start_price;      // 차트 그릴 때 기준이 될 시작가(프로그램 켰을 때의 그 가격)
+    double price_coef;       // 변환 후 가격
+    double ath_coef;         // 변환 후 가격
     
 } Data;
 
@@ -74,14 +74,8 @@ typedef struct {
 // } Chart_info;
 
 typedef struct {
-    SDL_Rect pos;           /**< 직사각형 객체의 상태를 나타내기 위한 구조체
-                                여기에 객체의 좌표, 위치 저장*/
-    int health;             /**< 주인공의 체력 상태를 나타내는 변수 (생존 1, 사망 0)*/
-    SDL_Texture *texture;   /**< 텍스쳐를 담고 있는 구조체 (그림파일을 열어
-                                 텍스쳐에 저장)*/
+    SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체 여기에 객체의 좌표, 위치 저장
+    SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (그림파일을 열어 텍스쳐에 저장)
 } Entity;
-
-
-
 
 #endif

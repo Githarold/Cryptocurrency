@@ -14,7 +14,8 @@ void ClearWindow(void)
     return;
 }
 
-void ShowWindow(void) {
+void ShowWindow(void)
+{
     SDL_RenderPresent(app.renderer);
 
     return;
@@ -40,7 +41,7 @@ void DefineChartHeight(void)
     chart_kkori[i].pos.h = abs((int)coin_data.ath_coef - chart[i].pos.y); 
 
     
-    printf("%d  %d  %d  %d  %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.price);
+    printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.price);
 }
 
 void RenderChart(Entity *object)
