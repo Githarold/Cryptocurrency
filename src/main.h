@@ -4,7 +4,6 @@
  @author    이승헌
 */
 
-
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -15,10 +14,12 @@
 #include "get_info.h"
 #include "draw_chart.h"
 
-#define URL "https://api.bithumb.com/public/ticker/"
+#define URL "https://api.upbit.com/v1/ticker?markets=krw-"
+#define URL_CANDLE "https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1"
 
 /* 사용하는 전역 변수 */
 int check = 60;
+int mouse_x, mouse_y;
 // int GREEN[4] = {0,255,0,1};
 // int RED[4] = {255,0,0,1};
 // int COLOR[4];

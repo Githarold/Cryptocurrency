@@ -17,6 +17,7 @@ void GetInput(void) {
                 break;
             // 마우스 이벤트 발생
             case SDL_MOUSEBUTTONUP:
+                SDL_GetMouseState(&mouse_x, &mouse_y);
                 break;
             default:
                 break;

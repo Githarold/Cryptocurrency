@@ -10,7 +10,6 @@ int main(void) {
     char url[BUFF_SIZE] = URL;
     make_url(url);
 
-
     // 초기화
     InitMemorySet();
     InitSDL();
