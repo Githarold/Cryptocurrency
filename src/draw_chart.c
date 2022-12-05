@@ -28,7 +28,7 @@ void checktime(void)
         check += 60;
         i = i + 1;
         chart[i].pos.y = coin_data.price_coef; //+ 900;   // 600 -> 900
-        chart_kkori[i].pos.y = coin_data.price_coef;
+        chart_kkori[i].pos.y = coin_data.ath_coef;
         
     }
     //printf("i : %d  chart[i].pos.y = %d  coin_data.price_coef = %f", i, chart[i].pos.y, -coin_data.price_coef + 900);
@@ -36,12 +36,12 @@ void checktime(void)
 
 
 void DefineChartHeight(void)
-{
-    chart[i].pos.h = abs((int)coin_data.price_coef - chart[i].pos.y);   // 600 -> 900
+{    
+    chart[i].pos.h = abs(round(coin_data.price_coef - chart[i].pos.y));   // 600 -> 900
     chart_kkori[i].pos.h = abs((int)coin_data.ath_coef - chart[i].pos.y); 
 
-    
-    printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.price);
+    printf("%.2f  %.2f  %d  %d\n", coin_data.price, coin_data.price_coef, chart[i].pos.y, chart[i].pos.h);
+    // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.price);
 }
 
 void RenderChart(Entity *object)

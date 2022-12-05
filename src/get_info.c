@@ -16,6 +16,8 @@ void make_url(char *url) {
 }
 
 void get_info(const char* url) {
+
+    // printf("%s", url);
     FILE *fp = fopen("result.json", "w");
     if (fp == NULL) {
         printf("fopen ERR\n");
@@ -47,6 +49,7 @@ void get_info(const char* url) {
     //########################
 
     coin_data.price = atof(json_object_get_string(price));                  // coin_data 구조체의 멤버를 실시간 값으로 계속 초기화 + 실수형 데이터 타입으로 변환
+    // printf("1");
     coin_data.fluctate_rate = atof(json_object_get_string(fluctuate_rate));
     coin_data.trade_volume = atof(json_object_get_string(trade_volume));
     // printf("가격 : %d원\n변동률 : %.2lf%%\n거래량 : %d원\n\n", coin_data.price, coin_data.fluctate_rate, coin_data.trade_volume);
@@ -63,10 +66,11 @@ void get_info(const char* url) {
     {
         coin_data.start_price = coin_data.price;
     }
-    coef = (SCREEN_HEIGHT/2) / coin_data.start_price;
-    
-    coin_data.price_coef = coin_data.price*coef;
-    coin_data.ath_coef = coin_data.ath_1m*coef;
+    // coef = (SCREEN_HEIGHT/2) / coin_data.start_price;
+    // coef = SCREEN_HEIGHT / (coin_data.start_price*0.1);
+    // coef = (coin_data.start_price*2) / SCREEN_HEIGHT;
+    coin_data.price_coef = (coin_data.price-0.95*coin_data.start_price)*SCREEN_HEIGHT*10/coin_data.start_price ;
+    coin_data.ath_coef = (coin_data.ath_1m-0.95*coin_data.start_price)*SCREEN_HEIGHT*10/coin_data.start_price;
     // printf("%.1lf\n",(double)SDL_GetTicks()/1000);
     // if(SDL_GetTicks() == 60)
     //     {
