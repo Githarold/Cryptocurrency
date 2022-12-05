@@ -8,6 +8,9 @@
 #define GETINFO_H
 
 #include "defs.h"
+
+#define URL_OPTION "&count=1"
+
 extern Data coin_data;
 extern double coef;
 

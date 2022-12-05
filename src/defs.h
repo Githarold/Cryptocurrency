@@ -12,7 +12,6 @@
 #include "string.h"
 #include "curl/curl.h"
 #include "json-c/json.h"
-#include "time.h"
 #include "math.h"
 
 #include "SDL2/SDL.h"
@@ -48,18 +47,19 @@ typedef struct {
 } RECT;
 
 /**
- @brief  Data : 코인의 가격, 변동량, 거래량 등의 정보가 담겨있는 구조체
+ @brief  Data : 캔들에서의 코인의 가격정보, 시간 정보 등이 담겨있는 구조체
 */
 typedef struct {
-    double fluctate_rate;    // 최근 24시간 변동률    
-    double price;            // 현재(실시간) 가격 정보
-    int trade_volume;        // 00시 기준 거래량
-    double ath_1m;           // ath -> 전고점 , 1분기준 전고점을 의미
-    double atl_1m;           // ath -> 전저점 , 1분기준 전자점을 의미
-    double start_price;      // 차트 그릴 때 기준이 될 시작가(프로그램 켰을 때의 그 가격)
-    double price_coef;       // 변환 후 가격
-    double ath_coef;         // 변환 후 가격
-    
+    char *candle_date_time_kst;        // 캔들 기준 시각
+    double candle_acc_trade_volume;    // 누적 거래량    
+    double opening_price;              // 캔들의 시작가
+    double high_price;                 // 캔들의 고가
+    double low_price;                  // 캔들의 저가
+    double trade_price;                // 코인의 시장가
+    double opening_coef;               // 변환 후 시작가
+    double high_coef;                  // 변환 후 고가
+    double low_coef;                   // 변환 후 저가
+    double trade_coef;                 // 변환 후 시장가
 } Data;
 
 /**

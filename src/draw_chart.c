@@ -27,21 +27,21 @@ void checktime(void)
     {
         check += 60;
         i = i + 1;
-        chart[i].pos.y = coin_data.price_coef; //+ 900;   // 600 -> 900
-        chart_kkori[i].pos.y = coin_data.ath_coef;
+        chart[i].pos.y = coin_data.trade_coef; //+ 900;   // 600 -> 900
+        chart_kkori[i].pos.y = coin_data.high_coef;
         
     }
-    //printf("i : %d  chart[i].pos.y = %d  coin_data.price_coef = %f", i, chart[i].pos.y, -coin_data.price_coef + 900);
+    //printf("i : %d  chart[i].pos.y = %d  coin_data.trade_coef = %f", i, chart[i].pos.y, -coin_data.trade_coef + 900);
 }
 
 
 void DefineChartHeight(void)
 {    
-    chart[i].pos.h = abs(round(coin_data.price_coef - chart[i].pos.y));   // 600 -> 900
-    chart_kkori[i].pos.h = abs((int)coin_data.ath_coef - chart[i].pos.y); 
+    chart[i].pos.h = abs(round(coin_data.trade_coef - chart[i].pos.y));   // 600 -> 900
+    chart_kkori[i].pos.h = abs((int)coin_data.high_coef - chart[i].pos.y); 
 
-    printf("%.2f  %.2f  %d  %d\n", coin_data.price, coin_data.price_coef, chart[i].pos.y, chart[i].pos.h);
-    // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.price);
+    printf("%.2f  %.2f  %d  %d\n", coin_data.trade_price, coin_data.trade_coef, chart[i].pos.y, chart[i].pos.h);
+    // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.trade_price);
 }
 
 void RenderChart(Entity *object)
@@ -69,17 +69,17 @@ void DrawChart(void)
 
 // void check_1m_and_get_chart_info(void)
 // {
-//     bar_chart_info.y2 = coin_data.price;  // 원점이 좌측 상단이라 값 변환 해줌
-//     line_chart_info.y1 = 600-coin_data.ath_1m*300/coin_data.start_price;
-//     printf("%d  %d  %d  %d  %d\n",SDL_GetTicks()/1000, check, SDL_GetTicks()/1000 - check, i, coin_data.price);
+//     bar_chart_info.y2 = coin_data.trade_price;  // 원점이 좌측 상단이라 값 변환 해줌
+//     line_chart_info.y1 = 600-coin_data.ath_1m*300/coin_data.start_trade_price;
+//     printf("%d  %d  %d  %d  %d\n",SDL_GetTicks()/1000, check, SDL_GetTicks()/1000 - check, i, coin_data.trade_price);
 //     if((SDL_GetTicks()/1000 - check) == 0)
 //     {
 //         check += 10;
-//         bar_chart_info.y1 = coin_data.price;
+//         bar_chart_info.y1 = coin_data.trade_price;
 //         bar_chart_info.x1 += 20;
 //         bar_chart_info.x2 = bar_chart_info.x1 + 20;
 //         line_chart_info.x1 = (bar_chart_info.x1 + bar_chart_info.x2)/2;
-//         bar_chart_info.y1 = coin_data.price;
+//         bar_chart_info.y1 = coin_data.trade_price;
 //         i++;
 //     }
 //     // rt[1] = {bar_chart_info.x1, bar_chart_info.y2, 20, bar_chart_info.y2-bar_chart_info.y1};
@@ -92,7 +92,7 @@ void DrawChart(void)
 
 // void green_or_red(void)
 // {
-//     // bar_chart_info.y2 = coin_data.price;
+//     // bar_chart_info.y2 = coin_data.trade_price;
 //     // line_chart_info.y1 = coin_data.ath_1m;
 
 //     if(bar_chart_info.y1 <= bar_chart_info.y2)      // 양전, 초록색으로 그림

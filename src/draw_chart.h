@@ -1,3 +1,12 @@
+/**
+ @file      draw_chart.h
+ @brief     차트 구현을 위한 함수 선언
+ @author    이태겸
+*/
+
+#ifndef DRAW_CHART_H
+#define DRAW_CHART_H
+
 #include "defs.h"
 
 extern int check;
@@ -23,3 +32,5 @@ void DrawChart(void);
 // void check_1m_and_get_chart_info(void);
 // void green_or_red(void);
 // void draw_chart(void);
+
+#endif

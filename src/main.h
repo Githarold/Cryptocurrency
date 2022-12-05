@@ -15,7 +15,7 @@
 #include "draw_chart.h"
 
 #define URL "https://api.upbit.com/v1/ticker?markets=krw-"
-#define URL_CANDLE "https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1"
+#define URL_CANDLE "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"
 
 /* 사용하는 전역 변수 */
 int check = 60;
