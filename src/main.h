@@ -27,6 +27,8 @@ Data coin_data;
 App app;
 Entity chart[60];
 Entity chart_kkori[60];
+Entity chart_volume[60];
 Entity layout;
+double coef_chart, coef_chart_before;
 
 #endif

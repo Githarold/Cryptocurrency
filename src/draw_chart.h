@@ -21,7 +21,9 @@ extern App app;
 extern int i;
 extern Entity chart[60];
 extern Entity chart_kkori[60];
+extern Entity chart_volume[60];
 extern Entity layout;
+extern double coef_chart, coef_chart_before;
 
 void ClearWindow(void);
 void ShowWindow(void);

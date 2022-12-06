@@ -13,6 +13,7 @@ extern App app;
 extern Data data;
 extern Entity chart[60];
 extern Entity chart_kkori[60];
+extern Entity chart_volume[60];
 
 /* main.h에 정의된 전역 변수 사용 */
 /**

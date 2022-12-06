@@ -54,7 +54,9 @@ typedef struct {
 typedef struct {
     char candle_date_time_kst[20];        // 캔들 기준 시각
     char candle_date_time_kst_check[20];        // for count
-    double candle_acc_trade_volume;    // 누적 거래량    
+    double candle_acc_trade_volume;    // 누적 거래량  
+    double candle_acc_trade_volume_high; // 최대 거래량 
+    double candle_acc_trade_volume_coef; // 변환 후 거래량
     double opening_price;              // 캔들의 시작가
     double high_price;                 // 캔들의 고가
     double low_price;                  // 캔들의 저가

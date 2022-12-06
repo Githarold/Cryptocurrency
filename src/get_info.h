@@ -14,6 +14,8 @@
 extern Data coin_data;
 extern double coef;
 extern int check;
+extern Entity chart[60];
+extern double coef_chart, coef_chart_before;
 
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.
