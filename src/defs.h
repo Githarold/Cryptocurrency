@@ -19,10 +19,12 @@
 #include "SDL2/SDL_ttf.h"
 #include "SDL2/SDL_rect.h"
 
-#define BUFF_SIZE 1024      // 문자열 버퍼 크기
-#define SCREEN_WIDTH 800    // 화면 너비(픽셀)
-#define SCREEN_HEIGHT 600   // 화면 높이(픽셀)
+#define BUFF_SIZE 1024      // 문자열 버퍼 크기 800, 600
+#define SCREEN_WIDTH 1024     // 화면 너비(픽셀) 차6
+#define SCREEN_HEIGHT 768   // 화면 높이(픽셀)
 #define TICK_INTERVAL 60000
+#define CHART_WIDTH 800
+#define CHART_HEIGHT 600
 
 
 
@@ -50,7 +52,8 @@ typedef struct {
  @brief  Data : 캔들에서의 코인의 가격정보, 시간 정보 등이 담겨있는 구조체
 */
 typedef struct {
-    char *candle_date_time_kst;        // 캔들 기준 시각
+    char candle_date_time_kst[20];        // 캔들 기준 시각
+    char candle_date_time_kst_check[20];        // for count
     double candle_acc_trade_volume;    // 누적 거래량    
     double opening_price;              // 캔들의 시작가
     double high_price;                 // 캔들의 고가
@@ -60,6 +63,7 @@ typedef struct {
     double high_coef;                  // 변환 후 고가
     double low_coef;                   // 변환 후 저가
     double trade_coef;                 // 변환 후 시장가
+    double pro_opening_price;          // 프로그램 시작했을 때 가격 
 } Data;
 
 /**

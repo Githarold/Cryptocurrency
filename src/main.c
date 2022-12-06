@@ -23,7 +23,7 @@ int main(void) {
         DefineChartHeight();
         DrawChart();
         ShowWindow();    
-        SDL_Delay(40);
+        SDL_Delay(100);     
     }
 
     return 0;
