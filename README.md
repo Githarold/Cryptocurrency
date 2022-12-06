@@ -1,6 +1,6 @@
 ## Cryptocurrency with Upbit API
 ###### Project in C programming with harold and grwise
----
+***
 ### External library list
 > 1. curl
 > + $ sudo apt-get install -y curl
@@ -17,4 +17,5 @@
 > > + $ mkdir json-c-build
 > > + $ cd json-c-build
 > > + $ cmake ../json-c
-> > Reference from https://github.com/json-c/json-c/blob/master/README.md#json-c
+> > ***
+> > You need to know optional function, refer to https://github.com/json-c/json-c/blob/master/README.md#json-c
