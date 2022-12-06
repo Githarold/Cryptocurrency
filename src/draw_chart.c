@@ -58,6 +58,12 @@ void DefineChartHeight(void)
 
     chart[i].pos.h = abs(round(coin_data.trade_coef - coin_data.opening_coef));   // 600 -> 900
     chart_kkori[i].pos.h = abs(round(coin_data.high_coef - coin_data.low_coef)); 
+
+    if(chart[i].pos.h == 0)
+    {
+        chart[i].pos.h = 1;
+    }
+
     chart_kkori[i].pos.y = 600 - coin_data.high_coef; 
     printf("%.2f   %.2f    %d\n", coin_data.trade_coef, coin_data.trade_price, i);
 
