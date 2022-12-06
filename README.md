@@ -18,5 +18,4 @@
 > > + $ cd json-c-build
 > > + $ cmake ../json-c
 > > ***
-> > If you need to know optional function about json-c, refer to 
-> > https://github.com/json-c/json-c/blob/master/README.md#json-c
+> > Reference : https://github.com/json-c/json-c/blob/master/README.md#json-c
