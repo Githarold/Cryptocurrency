@@ -7,7 +7,7 @@
 > ***
 > 2. json-c
 > > install using apt
-> + $ sudo apt install git
-> + $ sudo apt install cmake
-> + $ sudo apt install doxygen  # optional
-> + $ sudo apt install valgrind # optional
+> > + $ sudo apt install git
+> > + $ sudo apt install cmake
+> > + $ sudo apt install doxygen  # optional
+> > + $ sudo apt install valgrind # optional
