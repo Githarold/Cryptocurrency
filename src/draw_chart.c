@@ -77,7 +77,8 @@ void DefineChartHeight(void)
         for(int j = 0 ; j < i ; j++)
         {
             chart_volume[j].pos.h = chart_volume[j].pos.h * coef_chart / coef_chart_before;
-            chart_volume[j].pos.y = chart_volume[j].pos.y / (coef_chart / coef_chart_before);
+            chart_volume[j].pos.y = SCREEN_HEIGHT - chart_volume[j].pos.h;
+
     // printf("%d    %d     %.2f\n", chart_volume[i].pos.h, chart_volume[i].pos.y, coin_data.candle_acc_trade_volume_coef);  #####################거래량 디버그
     // chart_volume[i].pos.h = abs(round(SCREEN_HEIGHT - coin_data.candle_acc_trade_volume_coef))
 
