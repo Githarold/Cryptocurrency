@@ -3,6 +3,7 @@
  @brief     키보드 입력 발생 시 처리하는 함수 정의
  @author    이태겸
  */
+
 #include "input.h"
 
 void GetInput(void) {
@@ -13,6 +14,12 @@ void GetInput(void) {
         switch (event.type) {
             // 창닫기 버튼을 누른 경우
             case SDL_QUIT:
+                SDL_DestroyTexture(layout.texture);
+                for (i=0 ; i<60 ; i++)
+                {
+                    SDL_DestroyTexture(chart[i].texture);
+                    SDL_DestroyTexture(chart_kkori[i].texture);
+                }
                 QuitSDL(0);
                 break;
             // 마우스 이벤트 발생

@@ -20,19 +20,13 @@
 /* 사용하는 전역 변수 */
 int check;
 int mouse_x, mouse_y;
-// int GREEN[4] = {0,255,0,1};
-// int RED[4] = {255,0,0,1};
-// int COLOR[4];
-Data coin_data;
-App app;
-// Chart_info bar_chart_info, line_chart_info;
-// RECT rect;
-// SDL_Rect rt[60];
 int i = 0;
-Entity chart[60];
-Entity chart_kkori[60];
 double coef;
 
-
+Data coin_data;
+App app;
+Entity chart[60];
+Entity chart_kkori[60];
+Entity layout;
 
 #endif

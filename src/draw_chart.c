@@ -11,13 +11,22 @@ void ClearWindow(void)
     SDL_SetRenderDrawColor(app.renderer, 255, 255, 255, 255);
     SDL_RenderClear(app.renderer);
 
+    layout.texture = IMG_LoadTexture(app.renderer, "./gfx/layout.png");
+    layout.pos.x = 0;
+    layout.pos.y = 0;
+    layout.pos.h = SCREEN_HEIGHT;
+    layout.pos.w = SCREEN_WIDTH;
+
+    SDL_QueryTexture(layout.texture, NULL, NULL, &(layout.pos.w), &(layout.pos.h));
+    SDL_RenderCopy(app.renderer, layout.texture, NULL, NULL);
+
     return;
 }
 
 void ShowWindow(void)
 {
     SDL_RenderPresent(app.renderer);
-
+    
     return;
 }
 
@@ -65,7 +74,7 @@ void DefineChartHeight(void)
     }
 
     chart_kkori[i].pos.y = 600 - coin_data.high_coef; 
-    printf("%.2f   %.2f    %d\n", coin_data.trade_coef, coin_data.trade_price, i);
+    printf("%-8.2f %-10.2f %d\n", coin_data.trade_coef, coin_data.trade_price, i);
 
     // printf("%.2f  %.2f  %d  %d zzzz\n", coin_data.trade_price, 600 - coin_data.trade_coef, chart[i].pos.y, chart[i].pos.h);              // 12/6 
     // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.trade_price);
@@ -73,7 +82,6 @@ void DefineChartHeight(void)
 
 void RenderChart(Entity *object)
 {
-    // SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w), &(object->pos.h));
     SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    //이미지를 Dst만큼의 사각형에 출력
 }
 

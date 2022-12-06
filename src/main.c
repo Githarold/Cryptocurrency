@@ -16,14 +16,14 @@ int main(void) {
     InitChart();
 
     while (1) {
-        ClearWindow();        
+        ClearWindow();
         get_info(url);
-        GetInput();        
+        GetInput();
         checktime();
         DefineChartHeight();
         DrawChart();
-        ShowWindow();    
-        SDL_Delay(100);     
+        ShowWindow();
+        SDL_Delay(100);
     }
 
     return 0;

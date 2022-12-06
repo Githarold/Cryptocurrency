@@ -3,9 +3,11 @@
  @brief     무한 루프 진입 전 객체 및 SDL 요소 초기화를 위한 함수 정의
  @author    이승헌
 */
+
 #include "init.h"
 
-void InitSDL(void) {
+void InitSDL(void)
+{
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("[ERROR] in InitSDL(): %s", SDL_GetError());
         exit(1);
@@ -21,7 +23,8 @@ void InitSDL(void) {
     return;
 }
 
-void InitTTF(void) {
+void InitTTF(void)
+{
     if (TTF_Init() < 0) {
         printf("[ERROR] in InitTTF(): %s", SDL_GetError());
         exit(1);
@@ -32,7 +35,8 @@ void InitTTF(void) {
     return;
 }
 
-void QuitSDL(int flag) {
+void QuitSDL(int flag)
+{
     SDL_DestroyRenderer(app.renderer);
     SDL_DestroyWindow(app.window);
     QuitTTF();
@@ -42,20 +46,23 @@ void QuitSDL(int flag) {
     return;
 }
 
-void QuitTTF(void) {
+void QuitTTF(void)
+{
     TTF_CloseFont(app.font);
     TTF_Quit();
 
     return;
 }
 
-void InitMemorySet(void) {
+void InitMemorySet(void)
+{
     memset(&app, 0, sizeof(App));
 
     return;
 }
 
-void InitChart(void) {
+void InitChart(void)
+{
     for( int i = 0 ; i < 60 ; i++)
     {
         chart[i].pos.x = i*20;

@@ -21,6 +21,7 @@ extern App app;
 extern int i;
 extern Entity chart[60];
 extern Entity chart_kkori[60];
+extern Entity layout;
 
 void ClearWindow(void);
 void ShowWindow(void);
