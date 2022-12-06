@@ -20,7 +20,7 @@
 #include "SDL2/SDL_rect.h"
 
 #define BUFF_SIZE 1024      // 문자열 버퍼 크기 800, 600
-#define SCREEN_WIDTH 1024     // 화면 너비(픽셀) 차6
+#define SCREEN_WIDTH 1100     // 화면 너비(픽셀)
 #define SCREEN_HEIGHT 768   // 화면 높이(픽셀)
 #define TICK_INTERVAL 60000
 #define CHART_WIDTH 800
