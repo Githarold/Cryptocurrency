@@ -59,14 +59,15 @@ void InitChart(void) {
     for( int i = 0 ; i < 60 ; i++)
     {
         chart[i].pos.x = i*20;
-        chart[i].pos.y = SCREEN_HEIGHT/2;
+        chart[i].pos.y = CHART_HEIGHT/2;
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");
         chart[i].pos.w = 20;
         
         chart_kkori[i].pos.x = chart[i].pos.x + 10;
         chart_kkori[i].pos.w = 1;
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/greenline.png");
-        chart_kkori[i].pos.y = SCREEN_HEIGHT/2;
+        chart_kkori[i].pos.y = CHART_HEIGHT/2;
+
     }
 
     return;

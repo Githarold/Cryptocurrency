@@ -23,24 +23,51 @@ void ShowWindow(void)
 
 void checktime(void)
 {
-    if((SDL_GetTicks()/1000 - check) == 0)
+    // if((SDL_GetTicks()/1000 - check) == 0)              // 수정 필요 
+    // if(coin_data.candle_date_time_kst_check[20] != coin_data.candle_date_time_kst[20])
+    if(strcmp(coin_data.candle_date_time_kst, coin_data.candle_date_time_kst_check))
     {
-        check += 60;
+        // check += 60;
         i = i + 1;
-        chart[i].pos.y = coin_data.trade_coef; //+ 900;   // 600 -> 900
-        chart_kkori[i].pos.y = coin_data.high_coef;
-        
+        // chart[i].pos.y = 600 - coin_data.trade_coef; 
+        // chart_kkori[i].pos.y = 600 - coin_data.trade_coef; 
+        // coin_data.candle_date_time_kst_check[20] = coin_data.candle_date_time_kst[20];
+        strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);
+        SDL_Delay(100);     
     }
     //printf("i : %d  chart[i].pos.y = %d  coin_data.trade_coef = %f", i, chart[i].pos.y, -coin_data.trade_coef + 900);
+    //printf("%s   %s\n", coin_data.candle_date_time_kst_check[20], coin_data.candle_date_time_kst[20]);
+    // printf("%d\n", i);
 }
 
 
 void DefineChartHeight(void)
-{    
-    chart[i].pos.h = abs(round(coin_data.trade_coef - chart[i].pos.y));   // 600 -> 900
-    chart_kkori[i].pos.h = abs((int)coin_data.high_coef - chart[i].pos.y); 
+{   
+    if(coin_data.trade_coef < coin_data.opening_coef)
+    {
+        chart[i].pos.y = 600 - coin_data.opening_coef;
+        chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
+        chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");
+    }
+    else
+    {
+        chart[i].pos.y = 600 - coin_data.trade_coef; 
+        chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");
+        chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/greenline.png");
+    }
 
-    printf("%.2f  %.2f  %d  %d\n", coin_data.trade_price, coin_data.trade_coef, chart[i].pos.y, chart[i].pos.h);
+    chart[i].pos.h = abs(round(coin_data.trade_coef - coin_data.opening_coef));   // 600 -> 900
+    chart_kkori[i].pos.h = abs(round(coin_data.high_coef - coin_data.low_coef)); 
+
+    if(chart[i].pos.h == 0)
+    {
+        chart[i].pos.h = 1;
+    }
+
+    chart_kkori[i].pos.y = 600 - coin_data.high_coef; 
+    printf("%.2f   %.2f    %d\n", coin_data.trade_coef, coin_data.trade_price, i);
+
+    // printf("%.2f  %.2f  %d  %d zzzz\n", coin_data.trade_price, 600 - coin_data.trade_coef, chart[i].pos.y, chart[i].pos.h);              // 12/6 
     // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.trade_price);
 }
 

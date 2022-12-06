@@ -18,7 +18,7 @@
 #define URL_CANDLE "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"
 
 /* 사용하는 전역 변수 */
-int check = 60;
+int check;
 int mouse_x, mouse_y;
 // int GREEN[4] = {0,255,0,1};
 // int RED[4] = {255,0,0,1};

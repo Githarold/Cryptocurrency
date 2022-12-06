@@ -13,6 +13,7 @@
 
 extern Data coin_data;
 extern double coef;
+extern int check;
 
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.
