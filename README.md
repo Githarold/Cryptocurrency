@@ -11,6 +11,7 @@
 > > + $ sudo apt install cmake
 > > + $ sudo apt install doxygen  # optional
 > > + $ sudo apt install valgrind # optional
+> > ***
 > > Build instructions
 > > + $ git clone https://github.com/json-c/json-c.git
 > > + $ mkdir json-c-build
