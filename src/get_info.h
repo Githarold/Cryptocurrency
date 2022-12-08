@@ -16,6 +16,7 @@ extern double coef_chart, coef_chart_before;
 extern double coef;
 extern Data coin_data;
 extern Entity chart[60];
+extern double max_min_percent;
 
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.

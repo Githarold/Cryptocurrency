@@ -26,6 +26,18 @@ void GetInput(void) {
             case SDL_MOUSEBUTTONUP:
                 SDL_GetMouseState(&mouse_x, &mouse_y);
                 break;
+            case SDL_MOUSEWHEEL:
+                if(event.wheel.y > 0)
+                {
+                    // scroll up, 차트 창이 나타내는 가격 범위가 줄어들어야함 -> 최대 최소 퍼센트값 감소
+                    max_min_percent -= 0.1;
+
+                }
+                if(event.wheel.y < 0)
+                {
+                    // scroll down// 차트 창이 나타내는 가격 범위가 늘어나야함 -> 최대 최소 퍼센트값 증가
+                    max_min_percent += 0.1;
+                }
             default:
                 break;
         }

@@ -15,6 +15,7 @@ extern App app;
 extern Data data;
 extern Entity layout;
 extern int mouse_x, mouse_y, i;
+double max_min_percent;
 
 /**
  @brief 외부 입력을 받아 적절한 동작을 취하도록 한다.

@@ -30,5 +30,6 @@ Entity chart_kkori[60];
 Entity chart_volume[60];
 Entity layout;
 double coef_chart, coef_chart_before;
+double max_min_percent = 3;
 
 #endif
