@@ -1,7 +1,7 @@
 ## **Cryptocurrency with Upbit API**
 ###### Project in C programming with harold and grwise
 ***
-<span style="color:red"> MERRY CHRISTMAS </span>
+<span style="color:yellow">노란 글씨입니다.</span>
 ***
 ### External library list
 > 1. curl
