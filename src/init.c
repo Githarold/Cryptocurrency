@@ -76,3 +76,12 @@ void InitChart(void) {
 
     return;
 }
+
+void InitLayout(void)
+{
+    layout.texture = IMG_LoadTexture(app.renderer, "./gfx/layout.png");
+    layout.pos.x = 0;
+    layout.pos.y = 0;
+    layout.pos.h = SCREEN_HEIGHT;
+    layout.pos.w = SCREEN_WIDTH;
+}

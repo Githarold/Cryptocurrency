@@ -13,7 +13,10 @@ int main(void) {
     InitMemorySet();
     InitSDL();
     InitTTF();
+    InitLayout();
     InitChart();
+    
+    ShowWindow();
 
     while (1) {
         ClearWindow();
@@ -25,7 +28,7 @@ int main(void) {
         DefineChartHeight();
         DrawChart();
         ShowWindow();
-        SDL_Delay(100);
+        SDL_Delay(300);
     }
 
     return 0;

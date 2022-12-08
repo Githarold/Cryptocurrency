@@ -11,15 +11,17 @@ void ClearWindow(void)
     SDL_SetRenderDrawColor(app.renderer, 255, 255, 255, 255);
     SDL_RenderClear(app.renderer);
 
-    layout.texture = IMG_LoadTexture(app.renderer, "./gfx/layout.png");
-    layout.pos.x = 0;
-    layout.pos.y = 0;
-    layout.pos.h = SCREEN_HEIGHT;
-    layout.pos.w = SCREEN_WIDTH;
+    
 
-    SDL_QueryTexture(layout.texture, NULL, NULL, &(layout.pos.w), &(layout.pos.h));
-    SDL_RenderCopy(app.renderer, layout.texture, NULL, NULL);
+    
 
+    return;
+}
+
+void RenderLayout(Entity *object)
+{
+    SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w), &(object->pos.h));
+    SDL_RenderCopy(app.renderer, object->texture, NULL, NULL);
     return;
 }
 
@@ -36,7 +38,7 @@ void checktime(void)
     {
         i = i + 1;
         strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);
-        SDL_Delay(100);     
+        // SDL_Delay(100);     
     }
 }
 
@@ -95,12 +97,14 @@ void RenderChart(Entity *object)
 
 void DrawChart(void)
 {
+    RenderLayout(&layout);
     for (int i = 0; i < 60 ; i++) 
     {
         RenderChart(&(chart[i]));
         RenderChart(&(chart_kkori[i]));
         RenderChart(&(chart_volume[i]));
     }
+    
 }
 
 //##################################################################

@@ -14,6 +14,7 @@ extern Data data;
 extern Entity chart[60];
 extern Entity chart_kkori[60];
 extern Entity chart_volume[60];
+extern Entity layout;
 
 /* main.h에 정의된 전역 변수 사용 */
 /**
@@ -68,5 +69,7 @@ void InitMemorySet(void);
  @return 리턴 값 없음
 */
 void InitChart(void);
+
+void InitLayout(void);
 
 #endif
