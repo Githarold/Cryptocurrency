@@ -23,8 +23,8 @@ int mouse_x, mouse_y;
 int i = 0;
 double coef;
 
-Data coin_data;
 App app;
+Data coin_data;
 Entity chart[60];
 Entity chart_kkori[60];
 Entity chart_volume[60];

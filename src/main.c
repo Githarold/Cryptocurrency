@@ -18,6 +18,8 @@ int main(void) {
     while (1) {
         ClearWindow();
         get_info(url);
+        data_processing();
+        data_coef();
         GetInput();
         checktime();
         DefineChartHeight();

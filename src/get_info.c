@@ -18,8 +18,8 @@ void make_url(char *url) {
 
 void get_info(const char* url) {
 
-    // curl_perform의 결과로 나오는 표준 출력을 result.json 파일에 저장하기 위해 fopen() 함수를 사용한다.
-    FILE *fp = fopen("result.json", "w");
+    // curl_perform의 결과로 나오는 표준 출력을 chart_data.json 파일에 저장하기 위해 fopen() 함수를 사용한다.
+    FILE *fp = fopen("chart_data.json", "w");
     if (fp == NULL) {
         printf("fopen ERR\n");
         return;
@@ -42,12 +42,16 @@ void get_info(const char* url) {
     // 열었던 파일을 fclose() 함수를 통해 닫아준다.
     fclose(fp);
 
+    return;
+}
+
+void data_processing(void) {
     // 결과로 저장된 json파일을 파싱할 수 있도록 json_object 구조체의 객체들을 만든다.
-    json_object *result = json_object_from_file("result.json");
+    json_object *chart_data = json_object_from_file("chart_data.json");
     json_object *data, *trade_price, *opening_price, *high_price, *low_price, *candle_acc_trade_volume, *candle_date_time_kst;
 
     // 각 key값에 맞는 값들을 받아오는 데이터 파싱을 진행한다.
-    data = json_object_array_get_idx(result, 0);
+    data = json_object_array_get_idx(chart_data, 0);
     trade_price = json_object_object_get(data, "trade_price");
     opening_price = json_object_object_get(data, "opening_price");
     high_price = json_object_object_get(data, "high_price");
@@ -55,7 +59,6 @@ void get_info(const char* url) {
     candle_acc_trade_volume = json_object_object_get(data, "candle_acc_trade_volume");
     candle_date_time_kst = json_object_object_get(data, "candle_date_time_kst");
     // coin_data.candle_date_time_kst = candle_date_time_kst;
-    
 
     // coin_data 구조체의 멤버들을 실시간 값으로 초기화 + 실수형 데이터 타입으로 변환해준다.
     coin_data.trade_price = atof(json_object_get_string(trade_price));
@@ -66,6 +69,10 @@ void get_info(const char* url) {
     // coin_data.candle_date_time_kst[19] = *json_object_get_string(candle_date_time_kst); 
     strcpy(coin_data.candle_date_time_kst, json_object_get_string(candle_date_time_kst));
 
+    return;
+}
+
+void data_coef(void) {
     // if(coin_data.candle_date_time_kst_check == NULL)
     if(check == 0)
     {
