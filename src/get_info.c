@@ -5,21 +5,34 @@
  */
 #include "get_info.h"
 
-void make_url(char *url) {
+void make_url(void) {
+    // ticker, url 초기화
     char ticker[10] = "";
+    char url[BUFF_SIZE] = URL;
 
     printf("What's ticker? : ");
     scanf(" %s", ticker);
+
     strncat(url, ticker, strlen(ticker));
     strncat(url, URL_OPTION, strlen(URL_OPTION));
+    strncat(ticker, JSON, strlen(JSON));
+    printf("%s\n%s\n", ticker, url);
+
+    for (i=0 ; i<60 ; i++)
+    {
+        SDL_DestroyTexture(chart[i].texture);
+        SDL_DestroyTexture(chart_kkori[i].texture);
+        SDL_DestroyTexture(chart_volume[i].texture);
+    }
+
+    InitChart();
 
     return;
 }
 
-void get_info(const char* url) {
-
+void get_info(void) {
     // curl_perform의 결과로 나오는 표준 출력을 chart_data.json 파일에 저장하기 위해 fopen() 함수를 사용한다.
-    FILE *fp = fopen("chart_data.json", "w");
+    FILE *fp = fopen(ticker, "w");
     if (fp == NULL) {
         printf("fopen ERR\n");
         return;
@@ -47,7 +60,7 @@ void get_info(const char* url) {
 
 void data_processing(void) {
     // 결과로 저장된 json파일을 파싱할 수 있도록 json_object 구조체의 객체들을 만든다.
-    json_object *chart_data = json_object_from_file("chart_data.json");
+    json_object *chart_data = json_object_from_file(ticker);
     json_object *data, *trade_price, *opening_price, *high_price, *low_price, *candle_acc_trade_volume, *candle_date_time_kst;
 
     // 각 key값에 맞는 값들을 받아오는 데이터 파싱을 진행한다.

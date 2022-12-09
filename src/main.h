@@ -14,13 +14,11 @@
 #include "get_info.h"
 #include "draw_chart.h"
 
-#define URL "https://api.upbit.com/v1/ticker?markets=krw-"
-#define URL_CANDLE "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"
-
 /* 사용하는 전역 변수 */
 int check;
 int mouse_x, mouse_y;
 int i = 0;
+char ticker[10], url[BUFF_SIZE];
 double coef;
 
 App app;

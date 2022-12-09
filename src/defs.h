@@ -26,8 +26,7 @@
 #define TICK_INTERVAL 60000
 #define CHART_WIDTH 800
 #define CHART_HEIGHT 600
-
-
+#define URL "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"
 
 /* 구조체 정의 */
 /**
@@ -84,5 +83,13 @@ typedef struct {
     SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체 여기에 객체의 좌표, 위치 저장
     SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (그림파일을 열어 텍스쳐에 저장)
 } Entity;
+
+/**
+ @brief  Web : 데이터를 불러오기 위한 ticker와 url이 있는 구조체
+*/
+typedef struct {
+    char ticker[10];
+    char url[BUFF_SIZE];
+} Web;
 
 #endif

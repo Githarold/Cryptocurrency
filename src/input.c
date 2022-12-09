@@ -24,19 +24,36 @@ void GetInput(void) {
                 break;
             // 마우스 이벤트 발생
             case SDL_MOUSEBUTTONUP:
-                SDL_GetMouseState(&mouse_x, &mouse_y);
+                if(event.button.button == SDL_BUTTON_LEFT) {
+                    mouse_x = event.button.x;
+                    mouse_y = event.button.y;
+                    // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
+                    if ((mouse_x < 800) && (mouse_y < 50)) {
+                        make_url();
+                        printf("%s\n%s\n", ticker, url);
+                    }
+                }
+                // SDL_GetMouseState(&mouse_x, &mouse_y);
+                printf("%d %d\n", mouse_x, mouse_y);
                 break;
             case SDL_MOUSEWHEEL:
                 if(event.wheel.y > 0)
                 {
                     // scroll up, 차트 창이 나타내는 가격 범위가 줄어들어야함 -> 최대 최소 퍼센트값 감소
                     max_min_percent -= 0.1;
-
+                    if (max_min_percent < 1)
+                    {
+                        max_min_percent = 1;
+                    }
                 }
-                if(event.wheel.y < 0)
+                else if(event.wheel.y < 0)
                 {
                     // scroll down// 차트 창이 나타내는 가격 범위가 늘어나야함 -> 최대 최소 퍼센트값 증가
                     max_min_percent += 0.1;
+                    if (max_min_percent > 7)
+                    {
+                        max_min_percent = 7;
+                    }
                 }
             default:
                 break;
