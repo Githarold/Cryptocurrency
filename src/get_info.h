@@ -8,28 +8,28 @@
 #define GETINFO_H
 
 #include "defs.h"
-#include "init.h"
 #include "input.h"
 
 #define URL_OPTION "&count=1"
 #define JSON ".json"
 
 extern int check, i;
-extern char ticker[10], url[BUFF_SIZE];
+extern char ticker[10];
+extern char url[BUFF_SIZE];
 extern double coef;
 extern double max_min_percent;
 extern double coef_chart, coef_chart_before;
 extern Data coin_data;
-extern Entity chart[60];
-extern Entity chart_kkori[60];
-extern Entity chart_volume[60];
+extern Entity chart[30];
+extern Entity chart_kkori[30];
+extern Entity chart_volume[30];
 
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.
 
  @return 리턴 값 없음
 */
-void make_url();
+void make_url(void);
 
 /**
  @brief API에서 정보를 받아와 json파일로 저장한다.

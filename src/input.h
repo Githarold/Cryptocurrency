@@ -16,7 +16,8 @@ extern App app;
 extern Data data;
 extern Entity layout;
 extern int mouse_x, mouse_y, i;
-extern char ticker[10], url[BUFF_SIZE];
+extern char ticker[10];
+extern char url[BUFF_SIZE];
 extern double max_min_percent;
 
 /**

@@ -11,10 +11,6 @@ void ClearWindow(void)
     SDL_SetRenderDrawColor(app.renderer, 255, 255, 255, 255);
     SDL_RenderClear(app.renderer);
 
-    
-
-    
-
     return;
 }
 
@@ -22,6 +18,7 @@ void RenderLayout(Entity *object)
 {
     SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w), &(object->pos.h));
     SDL_RenderCopy(app.renderer, object->texture, NULL, NULL);
+
     return;
 }
 
@@ -36,12 +33,13 @@ void checktime(void)
 {
     if(strcmp(coin_data.candle_date_time_kst, coin_data.candle_date_time_kst_check))
     {
-        i = i + 1;
+        i++;
         strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);
         // SDL_Delay(100);     
     }
-}
 
+    return;
+}
 
 void DefineChartHeight(void)
 {   
@@ -88,23 +86,28 @@ void DefineChartHeight(void)
     // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.trade_price);
         }
     }
+
+    return;
 }
 
 void RenderChart(Entity *object)
 {
     SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    //이미지를 Dst만큼의 사각형에 출력
+
+    return;
 }
 
 void DrawChart(void)
 {
     RenderLayout(&layout);
-    for (int i = 0; i < 60 ; i++) 
+    for (int i = 0; i < 30 ; i++) 
     {
         RenderChart(&(chart[i]));
         RenderChart(&(chart_kkori[i]));
         RenderChart(&(chart_volume[i]));
     }
     
+    return;
 }
 
 //##################################################################

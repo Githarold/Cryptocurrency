@@ -84,12 +84,4 @@ typedef struct {
     SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (그림파일을 열어 텍스쳐에 저장)
 } Entity;
 
-/**
- @brief  Web : 데이터를 불러오기 위한 ticker와 url이 있는 구조체
-*/
-typedef struct {
-    char ticker[10];
-    char url[BUFF_SIZE];
-} Web;
-
 #endif

@@ -18,14 +18,15 @@
 int check;
 int mouse_x, mouse_y;
 int i = 0;
-char ticker[10], url[BUFF_SIZE];
+char ticker[10] = "";
+char url[BUFF_SIZE] = "";
 double coef;
 
 App app;
 Data coin_data;
-Entity chart[60];
-Entity chart_kkori[60];
-Entity chart_volume[60];
+Entity chart[30];
+Entity chart_kkori[30];
+Entity chart_volume[30];
 Entity layout;
 double coef_chart, coef_chart_before;
 double max_min_percent = 3;

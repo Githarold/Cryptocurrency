@@ -19,10 +19,10 @@ int main(void) {
 
     while (1) {
         ClearWindow();
-        GetInput();
         get_info();
         data_processing();
         data_coef();
+        GetInput();        
         checktime();
         DefineChartHeight();
         DrawChart();

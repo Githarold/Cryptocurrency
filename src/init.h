@@ -11,9 +11,9 @@
 
 extern App app;
 extern Data data;
-extern Entity chart[60];
-extern Entity chart_kkori[60];
-extern Entity chart_volume[60];
+extern Entity chart[30];
+extern Entity chart_kkori[30];
+extern Entity chart_volume[30];
 extern Entity layout;
 
 /* main.h에 정의된 전역 변수 사용 */

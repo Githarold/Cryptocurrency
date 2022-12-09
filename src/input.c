@@ -30,11 +30,10 @@ void GetInput(void) {
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
                     if ((mouse_x < 800) && (mouse_y < 50)) {
                         make_url();
-                        printf("%s\n%s\n", ticker, url);
+                        InitChart();
                     }
                 }
                 // SDL_GetMouseState(&mouse_x, &mouse_y);
-                printf("%d %d\n", mouse_x, mouse_y);
                 break;
             case SDL_MOUSEWHEEL:
                 if(event.wheel.y > 0)

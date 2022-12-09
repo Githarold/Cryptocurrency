@@ -19,9 +19,9 @@ extern App app;
 // extern RECT rect;
 // extern SDL_Rect rt[60];
 extern int i;
-extern Entity chart[60];
-extern Entity chart_kkori[60];
-extern Entity chart_volume[60];
+extern Entity chart[30];
+extern Entity chart_kkori[30];
+extern Entity chart_volume[30];
 extern Entity layout;
 extern double coef_chart, coef_chart_before;
 

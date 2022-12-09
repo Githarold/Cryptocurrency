@@ -7,8 +7,8 @@
 
 void make_url(void) {
     // ticker, url 초기화
-    char ticker[10] = "";
-    char url[BUFF_SIZE] = URL;
+    strcpy(url, URL);
+    strcpy(ticker, "");
 
     printf("What's ticker? : ");
     scanf(" %s", ticker);
@@ -16,16 +16,15 @@ void make_url(void) {
     strncat(url, ticker, strlen(ticker));
     strncat(url, URL_OPTION, strlen(URL_OPTION));
     strncat(ticker, JSON, strlen(JSON));
-    printf("%s\n%s\n", ticker, url);
 
-    for (i=0 ; i<60 ; i++)
-    {
-        SDL_DestroyTexture(chart[i].texture);
-        SDL_DestroyTexture(chart_kkori[i].texture);
-        SDL_DestroyTexture(chart_volume[i].texture);
-    }
-
-    InitChart();
+    // for (int i=0 ; i<60 ; i++)
+    // {
+    //     SDL_DestroyTexture(chart[i].texture);
+    //     SDL_DestroyTexture(chart_kkori[i].texture);
+    //     SDL_DestroyTexture(chart_volume[i].texture);
+    // }
+    i = 0;
+    check = 0;
 
     return;
 }
