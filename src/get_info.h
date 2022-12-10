@@ -24,6 +24,13 @@ extern Entity chart[30];
 extern Entity chart_kkori[30];
 extern Entity chart_volume[30];
 
+extern Text coin_price_board;
+extern Text left_money_board;
+extern Text buy_money_board;
+extern Text liquidation_money_board;
+extern Text rate_of_return_board;
+extern Text profits_board;
+
 /**
  @brief 입력받은 티커를 통해 url을 생성한다.
 
@@ -57,5 +64,22 @@ void data_processing(void);
  @return 리턴 값 없음
 */
 void data_coef(void);
+
+
+/**
+ @brief 게임 오버 시 최종 스코어 문자열 생성 (전역변수 score에 따라
+        최종 점수 표시)
+
+ 게임 오버 시 결과창에 띄울 문자열 "Your Final Score: [최종 점수]"을 만들고
+ \ref score_board 의 texture에 저장한다.
+
+ @remark 전역 변수 \ref score_board, \ref app, \ref score_text, \ref score 에 접근한다.
+
+ @return 리턴 값 없음
+ @ingroup Action
+*/
+void GetBoardInfo(void);
+
+
 
 #endif

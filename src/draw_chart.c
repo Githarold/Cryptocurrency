@@ -106,64 +106,17 @@ void DrawChart(void)
         RenderChart(&(chart_kkori[i]));
         RenderChart(&(chart_volume[i]));
     }
+    RenderBoard(&coin_price_board);
     
     return;
 }
 
-//##################################################################
-// 
+void RenderBoard(Text *object) 
+{
 
-// if(SDL_GetTicks() == 60)
-//     {
-        
-//     }
+    SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
+                     &(object->pos.h));
+    SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));
 
-// void check_1m_and_get_chart_info(void)
-// {
-//     bar_chart_info.y2 = coin_data.trade_price;  // 원점이 좌측 상단이라 값 변환 해줌
-//     line_chart_info.y1 = 600-coin_data.ath_1m*300/coin_data.start_trade_price;
-//     printf("%d  %d  %d  %d  %d\n",SDL_GetTicks()/1000, check, SDL_GetTicks()/1000 - check, i, coin_data.trade_price);
-//     if((SDL_GetTicks()/1000 - check) == 0)
-//     {
-//         check += 10;
-//         bar_chart_info.y1 = coin_data.trade_price;
-//         bar_chart_info.x1 += 20;
-//         bar_chart_info.x2 = bar_chart_info.x1 + 20;
-//         line_chart_info.x1 = (bar_chart_info.x1 + bar_chart_info.x2)/2;
-//         bar_chart_info.y1 = coin_data.trade_price;
-//         i++;
-//     }
-//     // rt[1] = {bar_chart_info.x1, bar_chart_info.y2, 20, bar_chart_info.y2-bar_chart_info.y1};
-//     rt[i].x = bar_chart_info.x1;
-//     rt[i].y = bar_chart_info.y2;
-//     rt[i].w = 20;
-//     rt[i].h = bar_chart_info.y2-bar_chart_info.y1;
-// }
-
-
-// void green_or_red(void)
-// {
-//     // bar_chart_info.y2 = coin_data.trade_price;
-//     // line_chart_info.y1 = coin_data.ath_1m;
-
-//     if(bar_chart_info.y1 <= bar_chart_info.y2)      // 양전, 초록색으로 그림
-//     {
-//         // COLOR[4] = GREEN[4];
-//         // line_chart_info.color[4] = GREEN[4];
-//         SDL_SetRenderDrawColor(app.renderer, 0, 255, 0, 1);
-//     }
-
-//     else      // 음전, 빨간색으로 그림
-//     {
-//         // COLOR[4] = RED[4];
-//         // line_chart_info.color[4] = RED[4];
-//         SDL_SetRenderDrawColor(app.renderer, 255, 0, 0, 1);
-//     }
-// }
-
-// void draw_chart(void)
-// {
-//     SDL_RenderFillRects(app.renderer, &rt[i], 60);
-//     SDL_RenderPresent(app.renderer);
-//     // SDL_RenderClear(app.renderer);
-// }
+    return;
+}

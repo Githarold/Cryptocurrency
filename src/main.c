@@ -14,12 +14,14 @@ int main(void) {
     InitTTF();
     InitLayout();
     InitChart();
+    InitScoreBoard();
     
     ShowWindow();
 
     while (1) {
         ClearWindow();
         get_info();
+        GetBoardInfo(); 
         data_processing();
         data_coef();
         GetInput();

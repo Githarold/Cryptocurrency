@@ -125,3 +125,19 @@ void data_coef(void) {
     
     return;
 }
+
+void GetBoardInfo(void) 
+{
+
+    // char tmp[36];
+    // strcpy(coin_price_board.value_text, "Your Score: ");
+    // SDL_lftoa(left_money, coin_price_board.value_text, 10);
+    sprintf(coin_price_board.value_text, "%.1lf", left_money);
+    // strcat(score_text, tmp);
+    coin_price_board.surface =
+        TTF_RenderText_Solid(app.font, coin_price_board.value_text, coin_price_board.color);
+    coin_price_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, coin_price_board.surface);
+
+    return;
+}

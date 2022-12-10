@@ -11,12 +11,10 @@
 #include "init.h"
 #include "input.h"
 
-#define FEA 0.02
-
 /* trade.c에서 사용할 변수 정의 */
 double profits;                    // 수익금 
 double buy_price;                  // 체결 가격
-double trade_price;                // position에 투입한 금액
+double trade_money;                // position에 투입한 금액
 double rate_of_return;             // 수익률
 double liquidation_price;          // 청산 가격
 

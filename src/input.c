@@ -21,15 +21,38 @@ void GetInput(void) {
                 {
                     SDL_DestroyTexture(chart[i].texture);
                     SDL_DestroyTexture(chart_kkori[i].texture);
+                    SDL_DestroyTexture(coin_price_board.texture);
+                    SDL_DestroyTexture(chart_volume->texture);
+                    SDL_DestroyTexture(layout.texture);
+
+                    SDL_DestroyTexture(coin_price_board.texture);
+                    SDL_FreeSurface(coin_price_board.surface);
+                    
                 }
                 QuitSDL(0);
                 break;
+            
+// extern App app;
+// extern Data data;
+// extern Entity chart[30];
+// extern Entity chart_kkori[30];
+// extern Entity chart_volume[30];
+// extern Entity layout;
+
+// extern Text coin_price_board;
+// extern Text left_money_board;
+// extern Text buy_money_board;
+// extern Text liquidation_money_board;
+// extern Text rate_of_return_board;
+// extern Text profits_board;
+
             // 마우스 이벤트 발생
             case SDL_MOUSEBUTTONDOWN:
                 if(event.button.button == SDL_BUTTON_LEFT)
                 {
                     mouse_x = event.button.x;
                     mouse_y = event.button.y;
+                    printf("x = %d, y = %d\n", mouse_x, mouse_y);
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
                     if ((mouse_x < 800) && (mouse_y < 50))
                     {

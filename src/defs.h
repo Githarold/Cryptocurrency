@@ -42,10 +42,12 @@ typedef struct {
  @brief  Text : 프로그램 내에 문자열을 표시할 경우 문자열을 나타내는 구조체
 */
 typedef struct {
-    // SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체
+    SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체
     SDL_Color color;        // 글씨 색깔을 저장하는 구조체
     SDL_Surface *surface;   // 폰트 렌더링을 위해 필요한 구조체
     SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (문자열을 surface로 만들고 texture에 저장)
+    char value_text[BUFF_SIZE];
+    double value;
 } Text;
 
 /**

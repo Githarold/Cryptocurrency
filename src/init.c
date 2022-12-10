@@ -51,9 +51,29 @@ void QuitTTF(void) {
 
 void InitMemorySet(void) {
     memset(&app, 0, sizeof(App));
+    memset(&chart, 0, sizeof(App));
+    memset(&chart_kkori, 0, sizeof(App));
+    memset(&layout, 0, sizeof(App));
+    memset(&coin_price_board, 0, sizeof(App));
+    memset(&left_money_board, 0, sizeof(App));
+    memset(&buy_money_board, 0, sizeof(App));
+    memset(&liquidation_money_board, 0, sizeof(App));
+    memset(&rate_of_return_board, 0, sizeof(App));
+    memset(&profits_board, 0, sizeof(App));
+
 
     return;
 }
+// extern Entity chart_kkori[30];
+// extern Entity chart_volume[30];
+// extern Entity layout;
+
+// extern Text coin_price_board;
+// extern Text left_money_board;
+// extern Text buy_money_board;
+// extern Text liquidation_money_board;
+// extern Text rate_of_return_board;
+// extern Text profits_board;
 
 void InitChart(void) {
     for(int i = 0 ; i < 30 ; i++)
@@ -87,4 +107,42 @@ void InitLayout(void)
     layout.pos.y = 0;
     layout.pos.h = SCREEN_HEIGHT;
     layout.pos.w = SCREEN_WIDTH;
+}
+
+void InitScoreBoard(void)
+{
+    coin_price_board.color.r = 0;
+    coin_price_board.color.g = 0;
+    coin_price_board.color.b = 0;
+    coin_price_board.color.a = 255;
+    coin_price_board.pos.x = 900;
+    coin_price_board.pos.y = 175;
+
+    // left_money_board.color.r = 0;
+    // left_money_board.color.g = 0;
+    // left_money_board.color.b = 0;
+    // left_money_board.color.a = 255;
+
+    // buy_money_board.color.r = 0;
+    // buy_money_board.color.g = 0;
+    // buy_money_board.color.b = 0;
+    // buy_money_board.color.a = 255;
+
+    // liquidation_money_board.color.r = 0;
+    // liquidation_money_board.color.g = 0;
+    // liquidation_money_board.color.b = 0;
+    // liquidation_money_board.color.a = 255;
+
+    // rate_of_return_board.color.r = 0;
+    // rate_of_return_board.color.g = 0;
+    // rate_of_return_board.color.b = 0;
+    // rate_of_return_board.color.a = 255;
+
+    // profits_board.color.r = 0;
+    // profits_board.color.g = 0;
+    // profits_board.color.b = 0;
+    // profits_board.color.a = 255;
+
+
+    return;
 }

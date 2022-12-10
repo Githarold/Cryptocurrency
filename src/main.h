@@ -14,6 +14,7 @@
 #include "trade.h"
 #include "get_info.h"
 #include "draw_chart.h"
+// #include "action.h"
 
 /* 사용하는 전역 변수 */
 char ticker[50];
@@ -23,7 +24,7 @@ int i, check;
 int leverage;
 int mouse_x, mouse_y;
 float trade_rate;
-double left_money = 26000000.0;
+double left_money = 1000000.0;
 double coef;
 double max_min_percent = 3;
 double coef_chart, coef_chart_before;
@@ -34,5 +35,20 @@ Entity layout;
 Entity chart[30];
 Entity chart_kkori[30];
 Entity chart_volume[30];
+
+
+
+
+
+// 레이아웃 상의 position 박스에 쓰일 텍스트 
+
+Text coin_price_board;
+Text left_money_board;
+Text buy_money_board;
+Text liquidation_money_board;
+Text rate_of_return_board;
+Text profits_board;
+
+
 
 #endif

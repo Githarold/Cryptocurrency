@@ -16,6 +16,13 @@ extern Entity chart_kkori[30];
 extern Entity chart_volume[30];
 extern Entity layout;
 
+extern Text coin_price_board;
+extern Text left_money_board;
+extern Text buy_money_board;
+extern Text liquidation_money_board;
+extern Text rate_of_return_board;
+extern Text profits_board;
+
 /* main.h에 정의된 전역 변수 사용 */
 /**
  @brief 프로그램 수행에 필요한 초기화 과정 수행
@@ -71,5 +78,7 @@ void InitMemorySet(void);
 void InitChart(void);
 
 void InitLayout(void);
+
+void InitScoreBoard(void);
 
 #endif
