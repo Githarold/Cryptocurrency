@@ -14,7 +14,7 @@
 #define JSON ".json"
 
 extern int check, i;
-extern char ticker[10];
+extern char ticker[50];
 extern char url[BUFF_SIZE];
 extern double coef;
 extern double max_min_percent;

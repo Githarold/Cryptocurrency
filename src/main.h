@@ -11,24 +11,28 @@
 
 #include "init.h"
 #include "input.h"
+#include "trade.h"
 #include "get_info.h"
 #include "draw_chart.h"
 
 /* 사용하는 전역 변수 */
-int check;
+char ticker[50];
+char url[BUFF_SIZE];
+short in_position_flag, short_long_flag;                      // 0 : Short / 1 : Long
+int i, check;
+int leverage;
 int mouse_x, mouse_y;
-int i = 0;
-char ticker[10] = "";
-char url[BUFF_SIZE] = "";
+float trade_rate;
+double left_money = 26000000.0;
 double coef;
+double max_min_percent = 3;
+double coef_chart, coef_chart_before;
 
 App app;
 Data coin_data;
+Entity layout;
 Entity chart[30];
 Entity chart_kkori[30];
 Entity chart_volume[30];
-Entity layout;
-double coef_chart, coef_chart_before;
-double max_min_percent = 3;
 
 #endif

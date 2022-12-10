@@ -9,15 +9,23 @@
 
 #include "init.h"
 #include "defs.h"
+#include "trade.h"
 #include "get_info.h"
+
+/* input.c에서 사용할 변수 정의 */
+short trade_rate_on_flag;
+int leverage_on_flag;
 
 /* main.h에 정의된 전역 변수 사용 */
 extern App app;
 extern Data data;
 extern Entity layout;
-extern int mouse_x, mouse_y, i;
-extern char ticker[10];
+extern char ticker[50];
 extern char url[BUFF_SIZE];
+extern short in_position_flag, short_long_flag;
+extern int mouse_x, mouse_y, i;
+extern int leverage;
+extern float trade_rate;
 extern double max_min_percent;
 
 /**

@@ -63,7 +63,7 @@ void InitChart(void) {
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");
         chart[i].pos.w = 20;
         chart[i].pos.h = 0;
-        
+
         chart_kkori[i].pos.x = chart[i].pos.x + 10;
         chart_kkori[i].pos.y = CHART_HEIGHT/2;
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/greenline.png");

@@ -17,12 +17,6 @@ void make_url(void) {
     strncat(url, URL_OPTION, strlen(URL_OPTION));
     strncat(ticker, JSON, strlen(JSON));
 
-    // for (int i=0 ; i<60 ; i++)
-    // {
-    //     SDL_DestroyTexture(chart[i].texture);
-    //     SDL_DestroyTexture(chart_kkori[i].texture);
-    //     SDL_DestroyTexture(chart_volume[i].texture);
-    // }
     i = 0;
     check = 0;
 

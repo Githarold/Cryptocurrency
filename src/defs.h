@@ -30,7 +30,7 @@
 
 /* 구조체 정의 */
 /**
- @brief  App: 프로그램 전체적으로 관리해야 하는 요소를 모아 놓은 구조체
+ @brief  App : 프로그램 전체적으로 관리해야 하는 요소를 모아 놓은 구조체
 */
 typedef struct {
     SDL_Renderer *renderer; // 렌더링 관리를 위한 구조체
@@ -39,12 +39,19 @@ typedef struct {
 } App;
 
 /**
- @brief  Text: 게임 내에 문자열을 표시할 경우 문자열을 나타내는 구조체
+ @brief  Text : 프로그램 내에 문자열을 표시할 경우 문자열을 나타내는 구조체
 */
 typedef struct {
     // SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체
     SDL_Color color;        // 글씨 색깔을 저장하는 구조체
     SDL_Surface *surface;   // 폰트 렌더링을 위해 필요한 구조체
+    SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (문자열을 surface로 만들고 texture에 저장)
+} Text;
+
+/**
+ @brief  Rect : 차트를 만들기 위한 직사각형의 texture 정보를 담고있는 구조체
+*/
+typedef struct {
     SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (문자열을 surface로 만들고 texture에 저장)
 } RECT;
 
@@ -67,17 +74,6 @@ typedef struct {
     double trade_coef;                          // 변환 후 시장가
     double pro_opening_price;                   // 프로그램 시작했을 때 가격
 } Data;
-
-/**
- @brief  Entity: 차트를 그릴 변수의 정보가 담겨있는 구조체
-*/
-// typedef struct {    
-//     int x1;
-//     int x2;
-//     int y1;
-//     int y2;
-//     // int color[4];
-// } Chart_info;
 
 typedef struct {
     SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체 여기에 객체의 좌표, 위치 저장

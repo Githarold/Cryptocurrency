@@ -22,7 +22,12 @@ int main(void) {
         get_info();
         data_processing();
         data_coef();
-        GetInput();        
+        GetInput();
+        // position에 들어가 있을 경우
+        if (in_position_flag)
+        {
+            calculate_position(leverage);
+        }
         checktime();
         DefineChartHeight();
         DrawChart();

@@ -35,7 +35,7 @@ void checktime(void)
     {
         i++;
         strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);
-        // SDL_Delay(100);     
+        SDL_Delay(100);     
     }
 
     return;
