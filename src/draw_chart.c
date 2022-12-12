@@ -128,21 +128,21 @@ void DrawChart(void)
 
 void DrawPositionInfo(void)
 {
-    if(buy_price > coin_data.trade_price)
+    if(buy_price > coin_data.trade_price)   // 가격 하락 
+    {
+        rate_of_return_board.color.r = 0;
+        rate_of_return_board.color.b = 255;
+
+        profits_board.color.r = 0;
+        profits_board.color.b = 225;
+    }
+    else if(buy_price < coin_data.trade_price)      // 가격 상승
     {
         rate_of_return_board.color.r = 225;
         rate_of_return_board.color.b = 0;
 
-        profits_board.color.r = 225;
+        profits_board.color.r = 255;
         profits_board.color.b = 0;
-    }
-    else if(buy_price < coin_data.trade_price)
-    {
-        rate_of_return_board.color.r = 0;
-        rate_of_return_board.color.b = 225;
-
-        profits_board.color.r = 0;
-        profits_board.color.b = 255;
     }
     else
     {
