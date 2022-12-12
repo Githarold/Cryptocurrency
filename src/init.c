@@ -156,7 +156,7 @@ void InitScoreBoard(void)
     profits_board.color.g = 0;
     profits_board.color.b = 0;
     profits_board.color.a = 255;
-    profits_board.pos.x = 1017;
+    profits_board.pos.x = 1019;
     profits_board.pos.y = 675;
     profits_board.pos.w = 70;
     profits_board.pos.h = 25;

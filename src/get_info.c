@@ -160,8 +160,12 @@ void GetBoardInfo(void)
         TTF_RenderText_Solid(app.font, rate_of_return_board.value_text, rate_of_return_board.color);
     rate_of_return_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, rate_of_return_board.surface);
-
+    
     sprintf(profits_board.value_text, "%.1lf", profits);
+    if((int)profits == 0)
+    {
+        strcat(profits_board.value_text, "          ");
+    }
     profits_board.surface =
         TTF_RenderText_Solid(app.font, profits_board.value_text, profits_board.color);
     profits_board.texture =
