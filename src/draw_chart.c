@@ -43,19 +43,32 @@ void checktime(void)
 
 void DefineChartHeight(void)
 {   
-    if(coin_data.trade_coef < coin_data.opening_coef)
+    if(coin_data.trade_coef < coin_data.opening_coef)           // 시작가보다 현재가가 낮을 때 (음봉)
     {
         chart[i].pos.y = 600 - coin_data.opening_coef;
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/greenline.png");
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");
+        coin_price_board.color.b = 225;
+        coin_price_board.color.r = 0;
     }
-    else
+    else if(coin_data.trade_coef > coin_data.opening_coef)      // 시작가보다 현재가가 높을 때 (양봉)
     {
         chart[i].pos.y = 600 - coin_data.trade_coef; 
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
+        coin_price_board.color.b = 0;
+        coin_price_board.color.r = 225;
+    }
+    else
+    {
+        chart[i].pos.y = 600 - coin_data.trade_coef;            // 가격변동 없을 때 (차트상으로는 양봉으로 취급)
+        chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
+        chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");
+        chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
+        coin_price_board.color.b = 0;
+        coin_price_board.color.r = 0;
     }
 
     chart[i].pos.h = abs(round(coin_data.trade_coef - coin_data.opening_coef));   
@@ -106,8 +119,54 @@ void DrawChart(void)
         RenderChart(&(chart_kkori[i]));
         RenderChart(&(chart_volume[i]));
     }
+    RenderBoard(&left_money_board);
     RenderBoard(&coin_price_board);
+
     
+    return;
+}
+
+void DrawPositionInfo(void)
+{
+    if(buy_price > coin_data.trade_price)
+    {
+        rate_of_return_board.color.r = 225;
+        rate_of_return_board.color.b = 0;
+
+        profits_board.color.r = 225;
+        profits_board.color.b = 0;
+    }
+    else if(buy_price < coin_data.trade_price)
+    {
+        rate_of_return_board.color.r = 0;
+        rate_of_return_board.color.b = 225;
+
+        profits_board.color.r = 0;
+        profits_board.color.b = 255;
+    }
+    else
+    {
+        rate_of_return_board.color.r = 0;
+        rate_of_return_board.color.b = 0;
+
+        profits_board.color.r = 0;
+        profits_board.color.b = 0;
+    }
+    RenderPositionBoard(&buy_price_board);
+    RenderPositionBoard(&liquidation_money_board);
+    RenderPositionBoard(&rate_of_return_board);
+    RenderPositionBoard(&profits_board);
+    // printf("info\n");
+    return;
+}
+
+void RenderPositionBoard(Text *object) 
+{
+
+    // SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
+    //                  &(object->pos.h));
+    SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    
+
     return;
 }
 
@@ -116,7 +175,7 @@ void RenderBoard(Text *object)
 
     SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
                      &(object->pos.h));
-    SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));
+    SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    
 
     return;
 }

@@ -30,7 +30,7 @@ extern double max_min_percent;
 
 extern Text coin_price_board;
 extern Text left_money_board;
-extern Text buy_money_board;
+extern Text buy_price_board;
 extern Text liquidation_money_board;
 extern Text rate_of_return_board;
 extern Text profits_board;

@@ -20,15 +20,24 @@ void GetInput(void) {
                 for (i=0 ; i<60 ; i++)
                 {
                     SDL_DestroyTexture(chart[i].texture);
-                    SDL_DestroyTexture(chart_kkori[i].texture);
-                    SDL_DestroyTexture(coin_price_board.texture);
-                    SDL_DestroyTexture(chart_volume->texture);
-                    SDL_DestroyTexture(layout.texture);
-
-                    SDL_DestroyTexture(coin_price_board.texture);
-                    SDL_FreeSurface(coin_price_board.surface);
-                    
+                    SDL_DestroyTexture(chart_kkori[i].texture);                    
                 }
+                SDL_DestroyTexture(left_money_board.texture);
+                SDL_DestroyTexture(coin_price_board.texture);
+                SDL_DestroyTexture(buy_price_board.texture);
+                SDL_DestroyTexture(liquidation_money_board.texture);
+                SDL_DestroyTexture(rate_of_return_board.texture);
+                SDL_DestroyTexture(profits_board.texture);
+                
+                SDL_DestroyTexture(chart_volume->texture);
+                SDL_DestroyTexture(layout.texture);
+
+                SDL_FreeSurface(left_money_board.surface);
+                SDL_FreeSurface(coin_price_board.surface);
+                SDL_FreeSurface(buy_price_board.surface);
+                SDL_FreeSurface(liquidation_money_board.surface);
+                SDL_FreeSurface(rate_of_return_board.surface);
+                SDL_FreeSurface(profits_board.surface);
                 QuitSDL(0);
                 break;
             
@@ -39,7 +48,7 @@ void GetInput(void) {
 // extern Entity chart_volume[30];
 // extern Entity layout;
 
-// extern Text coin_price_board;
+// extern Text left_money_board;
 // extern Text left_money_board;
 // extern Text buy_money_board;
 // extern Text liquidation_money_board;

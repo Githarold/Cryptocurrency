@@ -23,6 +23,11 @@ extern short in_position_flag, short_long_flag;                  // 0 : Short / 
 extern double left_money;
 extern Data coin_data;
 
+extern Text buy_price_board;
+extern Text liquidation_money_board;
+extern Text rate_of_return_board;
+extern Text profits_board;
+
 /**
  @brief position에 들어갈 때 정보들을 처리한다.
 

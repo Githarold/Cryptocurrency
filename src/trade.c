@@ -10,6 +10,7 @@ void open_position(float trade_rate, int leverage)
 {
     in_position_flag = 1;
 
+
     buy_price = coin_data.trade_price;                    // 체결 가격 저장
     trade_money = (1 - 0.0002 * leverage) * left_money * trade_rate;          // 투자 금액 계산  수수료 적용
     left_money *= (1 - trade_rate);

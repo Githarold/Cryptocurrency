@@ -128,16 +128,48 @@ void data_coef(void) {
 
 void GetBoardInfo(void) 
 {
+    sprintf(left_money_board.value_text, "%.0lf", left_money);
+    strcat(left_money_board.value_text, "  KRW");
+    left_money_board.surface =
+        TTF_RenderText_Solid(app.font, left_money_board.value_text, left_money_board.color);
+    left_money_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, left_money_board.surface);
 
-    // char tmp[36];
-    // strcpy(coin_price_board.value_text, "Your Score: ");
-    // SDL_lftoa(left_money, coin_price_board.value_text, 10);
-    sprintf(coin_price_board.value_text, "%.1lf", left_money);
-    // strcat(score_text, tmp);
+    sprintf(coin_price_board.value_text, "%.1lf", coin_data.trade_price);
+    strcat(coin_price_board.value_text, "  KRW");
     coin_price_board.surface =
         TTF_RenderText_Solid(app.font, coin_price_board.value_text, coin_price_board.color);
     coin_price_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, coin_price_board.surface);
+
+    sprintf(buy_price_board.value_text, "%.1lf", buy_price);
+    buy_price_board.surface =
+        TTF_RenderText_Solid(app.font, buy_price_board.value_text, buy_price_board.color);
+    buy_price_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, buy_price_board.surface);
+
+    sprintf(liquidation_money_board.value_text, "%.1lf", liquidation_price);
+    liquidation_money_board.surface =
+        TTF_RenderText_Solid(app.font, liquidation_money_board.value_text, liquidation_money_board.color);
+    liquidation_money_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, liquidation_money_board.surface);
+
+    sprintf(rate_of_return_board.value_text, "%.4lf", rate_of_return);
+    strcat(rate_of_return_board.value_text, " %");     // 이거 warning뜨는거 무시하셈 %%하면 %%둘다붙어서 나옴
+    rate_of_return_board.surface =
+        TTF_RenderText_Solid(app.font, rate_of_return_board.value_text, rate_of_return_board.color);
+    rate_of_return_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, rate_of_return_board.surface);
+
+    sprintf(profits_board.value_text, "%.1lf", profits);
+    profits_board.surface =
+        TTF_RenderText_Solid(app.font, profits_board.value_text, profits_board.color);
+    profits_board.texture =
+        SDL_CreateTextureFromSurface(app.renderer, profits_board.surface);
+
+
+    
+        // buy_money_board.pos
 
     return;
 }

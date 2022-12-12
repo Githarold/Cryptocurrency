@@ -13,12 +13,14 @@
 #define URL_OPTION "&count=1"
 #define JSON ".json"
 
+extern App app;
 extern int check, i;
 extern char ticker[50];
 extern char url[BUFF_SIZE];
 extern double coef;
 extern double max_min_percent;
 extern double coef_chart, coef_chart_before;
+extern double buy_price;
 extern Data coin_data;
 extern Entity chart[30];
 extern Entity chart_kkori[30];
@@ -26,7 +28,7 @@ extern Entity chart_volume[30];
 
 extern Text coin_price_board;
 extern Text left_money_board;
-extern Text buy_money_board;
+extern Text buy_price_board;
 extern Text liquidation_money_board;
 extern Text rate_of_return_board;
 extern Text profits_board;

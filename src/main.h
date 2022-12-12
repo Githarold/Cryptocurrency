@@ -44,7 +44,7 @@ Entity chart_volume[30];
 
 Text coin_price_board;
 Text left_money_board;
-Text buy_money_board;
+Text buy_price_board;
 Text liquidation_money_board;
 Text rate_of_return_board;
 Text profits_board;

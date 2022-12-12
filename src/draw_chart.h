@@ -19,6 +19,7 @@ extern App app;
 // extern RECT rect;
 // extern SDL_Rect rt[60];
 extern int i;
+extern double buy_price;
 extern Entity chart[30];
 extern Entity chart_kkori[30];
 extern Entity chart_volume[30];
@@ -27,7 +28,7 @@ extern double coef_chart, coef_chart_before;
 
 extern Text coin_price_board;
 extern Text left_money_board;
-extern Text buy_money_board;
+extern Text buy_price_board;
 extern Text liquidation_money_board;
 extern Text rate_of_return_board;
 extern Text profits_board;
@@ -39,6 +40,8 @@ void DefineChartHeight(void);
 void RenderChart(Entity *object);
 void DrawChart(void);
 void RenderBoard(Text *object);
+void DrawPositionInfo(void);
+void RenderPositionBoard(Text *object);
 
 // void check_1m_and_get_chart_info(void);
 // void green_or_red(void);

@@ -27,8 +27,8 @@ void InitTTF(void) {
         exit(1);
     }
 
-    app.font = TTF_OpenFont("./ttf/LiberationSans-Regular.ttf", 20);
-
+    app.font = TTF_OpenFont("./ttf/KoPubWorld Dotum Bold.ttf", 22);
+    
     return;
 }
 
@@ -56,7 +56,7 @@ void InitMemorySet(void) {
     memset(&layout, 0, sizeof(App));
     memset(&coin_price_board, 0, sizeof(App));
     memset(&left_money_board, 0, sizeof(App));
-    memset(&buy_money_board, 0, sizeof(App));
+    memset(&buy_price_board, 0, sizeof(App));
     memset(&liquidation_money_board, 0, sizeof(App));
     memset(&rate_of_return_board, 0, sizeof(App));
     memset(&profits_board, 0, sizeof(App));
@@ -68,7 +68,7 @@ void InitMemorySet(void) {
 // extern Entity chart_volume[30];
 // extern Entity layout;
 
-// extern Text coin_price_board;
+// extern Text left_money_board;
 // extern Text left_money_board;
 // extern Text buy_money_board;
 // extern Text liquidation_money_board;
@@ -111,37 +111,55 @@ void InitLayout(void)
 
 void InitScoreBoard(void)
 {
-    coin_price_board.color.r = 0;
+    coin_price_board.color.r = 0;       // 실시간 코인 가격를 시각화하여 보여줌
     coin_price_board.color.g = 0;
     coin_price_board.color.b = 0;
     coin_price_board.color.a = 255;
-    coin_price_board.pos.x = 900;
-    coin_price_board.pos.y = 175;
+    coin_price_board.pos.x = 550;
+    coin_price_board.pos.y = 11;
 
-    // left_money_board.color.r = 0;
-    // left_money_board.color.g = 0;
-    // left_money_board.color.b = 0;
-    // left_money_board.color.a = 255;
+    left_money_board.color.r = 0;       // 포지션 투입 후 남은 금액 보여줌 
+    left_money_board.color.g = 0;
+    left_money_board.color.b = 0;
+    left_money_board.color.a = 255;
+    left_money_board.pos.x = 890;
+    left_money_board.pos.y = 169;
 
-    // buy_money_board.color.r = 0;
-    // buy_money_board.color.g = 0;
-    // buy_money_board.color.b = 0;
-    // buy_money_board.color.a = 255;
+    buy_price_board.color.r = 0;
+    buy_price_board.color.g = 0;
+    buy_price_board.color.b = 0;
+    buy_price_board.color.a = 255;
+    buy_price_board.pos.x = 865;
+    buy_price_board.pos.y = 640;
+    buy_price_board.pos.w = 80;
+    buy_price_board.pos.h = 25;
 
-    // liquidation_money_board.color.r = 0;
-    // liquidation_money_board.color.g = 0;
-    // liquidation_money_board.color.b = 0;
-    // liquidation_money_board.color.a = 255;
+    liquidation_money_board.color.r = 0;
+    liquidation_money_board.color.g = 0;
+    liquidation_money_board.color.b = 0;
+    liquidation_money_board.color.a = 255;
+    liquidation_money_board.pos.x = 865;
+    liquidation_money_board.pos.y = 675;
+    liquidation_money_board.pos.w = 80;
+    liquidation_money_board.pos.h = 25;
 
-    // rate_of_return_board.color.r = 0;
-    // rate_of_return_board.color.g = 0;
-    // rate_of_return_board.color.b = 0;
-    // rate_of_return_board.color.a = 255;
+    rate_of_return_board.color.r = 0;
+    rate_of_return_board.color.g = 0;
+    rate_of_return_board.color.b = 0;
+    rate_of_return_board.color.a = 255;
+    rate_of_return_board.pos.x = 1019;
+    rate_of_return_board.pos.y = 640;
+    rate_of_return_board.pos.w = 70;
+    rate_of_return_board.pos.h = 25;
 
-    // profits_board.color.r = 0;
-    // profits_board.color.g = 0;
-    // profits_board.color.b = 0;
-    // profits_board.color.a = 255;
+    profits_board.color.r = 0;
+    profits_board.color.g = 0;
+    profits_board.color.b = 0;
+    profits_board.color.a = 255;
+    profits_board.pos.x = 1017;
+    profits_board.pos.y = 675;
+    profits_board.pos.w = 70;
+    profits_board.pos.h = 25;
 
 
     return;
