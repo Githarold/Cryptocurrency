@@ -56,6 +56,13 @@ void data_processing(void) {
     json_object *chart_data = json_object_from_file(ticker);
     json_object *data, *trade_price, *opening_price, *high_price, *low_price, *candle_acc_trade_volume, *candle_date_time_kst;
 
+    if (json_object_object_get(chart_data, "error"))
+    {
+        printf("Invalid ticker!!!\n");
+        make_url();
+        get_info();
+        json_object *chart_data = json_object_from_file(ticker);
+    }
     // 각 key값에 맞는 값들을 받아오는 데이터 파싱을 진행한다.
     data = json_object_array_get_idx(chart_data, 0);
     trade_price = json_object_object_get(data, "trade_price");

@@ -19,6 +19,7 @@ extern App app;
 // extern RECT rect;
 // extern SDL_Rect rt[60];
 extern int i;
+extern short short_long_flag;
 extern double buy_price;
 extern double coef_chart, coef_chart_before;
 extern Entity chart[30];

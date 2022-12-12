@@ -128,21 +128,43 @@ void DrawChart(void)
 
 void DrawPositionInfo(void)
 {
-    if(buy_price > coin_data.trade_price)   // 가격 하락 
+    if (buy_price > coin_data.trade_price)           // 가격 하락 
     {
-        rate_of_return_board.color.r = 0;
-        rate_of_return_board.color.b = 255;
+        if (short_long_flag)                         // Long 포지션
+        {
+            rate_of_return_board.color.r = 0;
+            rate_of_return_board.color.b = 255;
 
-        profits_board.color.r = 0;
-        profits_board.color.b = 255;
+            profits_board.color.r = 0;
+            profits_board.color.b = 255;
+        }
+        else                                         // Short 포지션
+        {
+            rate_of_return_board.color.r = 255;
+            rate_of_return_board.color.b = 0;
+
+            profits_board.color.r = 255;
+            profits_board.color.b = 0;
+        }
     }
-    else if(buy_price < coin_data.trade_price)      // 가격 상승
+    else if (buy_price < coin_data.trade_price)      // 가격 상승
     {
-        rate_of_return_board.color.r = 225;
-        rate_of_return_board.color.b = 0;
+        if (short_long_flag)                         // Long 포지션
+        {
+            rate_of_return_board.color.r = 255;
+            rate_of_return_board.color.b = 0;
 
-        profits_board.color.r = 255;
-        profits_board.color.b = 0;
+            profits_board.color.r = 255;
+            profits_board.color.b = 0;                
+        }
+        else                                         // Short 포지션
+        {
+            rate_of_return_board.color.r = 0;
+            rate_of_return_board.color.b = 255;
+
+            profits_board.color.r = 0;
+            profits_board.color.b = 255;
+        }
     }
     else
     {
