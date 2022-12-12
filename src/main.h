@@ -19,7 +19,8 @@
 /* 사용하는 전역 변수 */
 char ticker[50];
 char url[BUFF_SIZE];
-short in_position_flag, short_long_flag;                      // 0 : Short / 1 : Long
+short in_position_flag;                     // 0 : not in position / 1 : in position
+short short_long_flag;                      // 0 : Short / 1 : Long
 int i, check;
 int leverage;
 int mouse_x, mouse_y;

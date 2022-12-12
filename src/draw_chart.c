@@ -134,7 +134,7 @@ void DrawPositionInfo(void)
         rate_of_return_board.color.b = 255;
 
         profits_board.color.r = 0;
-        profits_board.color.b = 225;
+        profits_board.color.b = 255;
     }
     else if(buy_price < coin_data.trade_price)      // 가격 상승
     {
@@ -156,7 +156,6 @@ void DrawPositionInfo(void)
     RenderPositionBoard(&liquidation_money_board);
     RenderPositionBoard(&rate_of_return_board);
     RenderPositionBoard(&profits_board);
-    // printf("info\n");
     return;
 }
 

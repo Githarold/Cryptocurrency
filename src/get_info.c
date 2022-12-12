@@ -166,9 +166,6 @@ void GetBoardInfo(void)
         TTF_RenderText_Solid(app.font, profits_board.value_text, profits_board.color);
     profits_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, profits_board.surface);
-
-
-    
         // buy_money_board.pos
 
     return;

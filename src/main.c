@@ -21,7 +21,7 @@ int main(void) {
     while (1) {
         ClearWindow();
         get_info();
-        GetBoardInfo(); 
+        GetBoardInfo();
         data_processing();
         data_coef();
         GetInput();
@@ -37,12 +37,11 @@ int main(void) {
         DrawChart();
         if (in_position_flag)
         {
+            DrawPositionInfo();            
             calculate_position(leverage);
-            DrawPositionInfo();
         }
         ShowWindow();
         SDL_Delay(100);
-        // app.font = TTF_OpenFont("./ttf/KoPubWorld Dotum Bold.ttf", 22);
     }
 
     return 0;

@@ -40,20 +40,6 @@ void GetInput(void) {
                 SDL_FreeSurface(profits_board.surface);
                 QuitSDL(0);
                 break;
-            
-// extern App app;
-// extern Data data;
-// extern Entity chart[30];
-// extern Entity chart_kkori[30];
-// extern Entity chart_volume[30];
-// extern Entity layout;
-
-// extern Text left_money_board;
-// extern Text left_money_board;
-// extern Text buy_money_board;
-// extern Text liquidation_money_board;
-// extern Text rate_of_return_board;
-// extern Text profits_board;
 
             // 마우스 이벤트 발생
             case SDL_MOUSEBUTTONDOWN:
@@ -63,10 +49,10 @@ void GetInput(void) {
                     mouse_y = event.button.y;
                     printf("x = %d, y = %d\n", mouse_x, mouse_y);
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
-                    if ((mouse_x < 800) && (mouse_y < 50))
+                    if ((mouse_x < 500) && (mouse_y < 50))
                     {
+                        close_position();                        
                         make_url();
-                        close_position();
                         InitChart();
                     }
                     // 투자 비율 10% 선택한 경우
@@ -120,7 +106,7 @@ void GetInput(void) {
                     // Short 포지션을 선택한 경우
                     else if ((mouse_x > 964) && (mouse_y > 536) && (mouse_x < 1076) && (mouse_y < 584))
                     {
-                        if (trade_rate_on_flag && leverage_on_flag)
+                        if (!in_position_flag && trade_rate_on_flag && leverage_on_flag)
                         {
                             short_long_flag = 0;
                             open_position(trade_rate, leverage);
@@ -131,7 +117,7 @@ void GetInput(void) {
                     // Long 포지션을 선택한 경우
                     else if ((mouse_x > 825) && (mouse_y > 536) && (mouse_x < 938) && (mouse_y < 584))
                     {
-                        if (trade_rate_on_flag && leverage_on_flag)
+                        if (!in_position_flag && trade_rate_on_flag && leverage_on_flag)
                         {
                             short_long_flag = 1;
                             open_position(trade_rate, leverage);
@@ -143,7 +129,6 @@ void GetInput(void) {
                     else if ((mouse_x > 830) && (mouse_y > 737) && (mouse_x < 1075) && (mouse_y < 764))
                     {
                         close_position();
-                        in_position_flag = 0;
                     }
                 }
                 // SDL_GetMouseState(&mouse_x, &mouse_y);

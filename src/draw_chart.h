@@ -20,11 +20,11 @@ extern App app;
 // extern SDL_Rect rt[60];
 extern int i;
 extern double buy_price;
+extern double coef_chart, coef_chart_before;
 extern Entity chart[30];
 extern Entity chart_kkori[30];
 extern Entity chart_volume[30];
 extern Entity layout;
-extern double coef_chart, coef_chart_before;
 
 extern Text coin_price_board;
 extern Text left_money_board;
