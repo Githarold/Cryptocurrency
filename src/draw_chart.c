@@ -79,9 +79,7 @@ void DefineChartHeight(void)
         chart[i].pos.h = 1;
     }
 
-    chart_kkori[i].pos.y = 600 - coin_data.high_coef; 
-    // printf("%-8.2f %-10.2f %d\n", coin_data.trade_coef, coin_data.trade_price, i);      ##########################################################가격 디버그
-    
+    chart_kkori[i].pos.y = 600 - coin_data.high_coef;     
     chart_volume[i].pos.h = coin_data.candle_acc_trade_volume_coef;
     chart_volume[i].pos.y = SCREEN_HEIGHT - chart_volume[i].pos.h;
 
@@ -91,12 +89,6 @@ void DefineChartHeight(void)
         {
             chart_volume[j].pos.h = chart_volume[j].pos.h * coef_chart / coef_chart_before;
             chart_volume[j].pos.y = SCREEN_HEIGHT - chart_volume[j].pos.h;
-
-    // printf("%d    %d     %.2f\n", chart_volume[i].pos.h, chart_volume[i].pos.y, coin_data.candle_acc_trade_volume_coef);  #####################거래량 디버그
-    // chart_volume[i].pos.h = abs(round(SCREEN_HEIGHT - coin_data.candle_acc_trade_volume_coef))
-
-    // printf("%.2f  %.2f  %d  %d zzzz\n", coin_data.trade_price, 600 - coin_data.trade_coef, chart[i].pos.y, chart[i].pos.h);              // 12/6 
-    // printf("%d  %d  %d  %d  가격 : %.2f\n", chart[i].pos.h, chart[i].pos.x, chart[i].pos.y, chart[i].pos.w, coin_data.trade_price);
         }
     }
 
@@ -121,7 +113,6 @@ void DrawChart(void)
     }
     RenderBoard(&left_money_board);
     RenderBoard(&coin_price_board);
-
     
     return;
 }
@@ -183,9 +174,6 @@ void DrawPositionInfo(void)
 
 void RenderPositionBoard(Text *object) 
 {
-
-    // SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
-    //                  &(object->pos.h));
     SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    
 
     return;
@@ -193,7 +181,6 @@ void RenderPositionBoard(Text *object)
 
 void RenderBoard(Text *object) 
 {
-
     SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
                      &(object->pos.h));
     SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    
