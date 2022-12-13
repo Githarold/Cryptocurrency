@@ -9,10 +9,6 @@
 
 #include "defs.h"
 
-/* init.c에서만 사용할 변수 정의 */
-App search;
-Entity search_screen;
-
 extern App app;
 extern Data data;
 extern Entity chart[30];
@@ -85,8 +81,6 @@ void InitLayout(void);
 
 void InitScoreBoard(void);
 
-void InitSearchScreen(void);
-
-void QuitSearchScreen(void);
+void InitSearchCoin(void);
 
 #endif

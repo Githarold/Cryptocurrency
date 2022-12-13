@@ -52,7 +52,6 @@ void GetInput(void) {
                     if ((mouse_x < 500) && (mouse_y < 50))
                     {
                         close_position();
-                        InitSearchScreen();
                         make_url();
                         InitChart();
                     }

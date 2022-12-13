@@ -7,12 +7,11 @@
 #include "main.h"
 
 int main(void) {
-    InitMemorySet();    
-    InitSearchScreen();
-    make_url();
     // 초기화
+    InitMemorySet();    
     InitSDL();
     InitTTF();
+    make_url();
     InitLayout();
     InitChart();
     InitScoreBoard();

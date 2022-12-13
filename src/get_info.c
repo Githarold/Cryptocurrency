@@ -20,20 +20,23 @@ void make_url(void) {
             switch (event.type)
             {
                 case SDL_QUIT:
-                    QuitSearchScreen();
-                    SDL_StopTextInput();
                     done = SDL_TRUE;
                     break;
-
+                    
                 case SDL_TEXTINPUT:
+                    printf("While...\n %s", event.text.text);
                     strcat(ticker, event.text.text);
                     break;
             }
         }
     }
+    SDL_StopTextInput();
     strcat(url, ticker);
     strcat(url, URL_OPTION);
     strcat(ticker, JSON);
+
+    printf("%s\n%s\n", ticker, url);
+
     i = 0;
     check = 0;
 
@@ -57,7 +60,7 @@ void get_info(void) {
 
     // 표준출력으로 나오는 curl_perform의 결과를 WRITEDATA 옵션의 easy_setopt 함수를 통해 버퍼 fp에 저장한다.
     CURLcode res;
-    curl_easy_setopt(curl, CURLOPT_URL, "https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=30");  // debug(url)
+    curl_easy_setopt(curl, CURLOPT_URL, url);  // debug(url)
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
     res = curl_easy_perform(curl);
     curl_easy_cleanup(curl);

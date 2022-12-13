@@ -60,7 +60,6 @@ void InitMemorySet(void) {
     memset(&liquidation_money_board, 0, sizeof(Text));
     memset(&rate_of_return_board, 0, sizeof(Text));
     memset(&profits_board, 0, sizeof(Text));
-    memset(&search, 0, sizeof(App));
 
     return;
 }
@@ -151,45 +150,14 @@ void InitScoreBoard(void)
     profits_board.pos.w = 70;
     profits_board.pos.h = 25;
 
-
     return;
 }
 
-void InitSearchScreen(void)
+void InitSearchCoin(void)
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("[ERROR] in InitSDL(): %s", SDL_GetError());
-        exit(1);
-    }
-    search.window = SDL_CreateWindow("CoinSearch", SDL_WINDOWPOS_UNDEFINED,
-                                  SDL_WINDOWPOS_UNDEFINED, 290,
-                                  50, 0);
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-    search.renderer = SDL_CreateRenderer(search.window, -1, SDL_RENDERER_ACCELERATED);
-    IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
-
-    SDL_RenderPresent(search.renderer);
-    SDL_SetRenderDrawColor(search.renderer, 255, 255, 255, 255);
-    SDL_RenderClear(search.renderer);
-
-    search_screen.texture = IMG_LoadTexture(search.renderer, "./gfx/search.png");
-    search_screen.pos.x = 0;
-    search_screen.pos.y = 0;
-    search_screen.pos.w = 290;
-    search_screen.pos.h = 50;
-
-    SDL_QueryTexture(search_screen.texture, NULL, NULL, &(search_screen.pos.w), &(search_screen.pos.h));
-    SDL_RenderCopy(search.renderer, search_screen.texture, NULL, NULL);
-
-    return;
-}
-
-void QuitSearchScreen(void)
-{
-    SDL_DestroyTexture(search_screen.texture);
-    SDL_DestroyRenderer(search.renderer);
-    SDL_DestroyWindow(search.window);
-    SDL_Quit();
-
-    return;
+    layout.texture = IMG_LoadTexture(app.renderer, "./gfx/layout.png");
+    layout.pos.x = 0;
+    layout.pos.y = 0;
+    layout.pos.h = SCREEN_HEIGHT;
+    layout.pos.w = SCREEN_WIDTH;
 }
