@@ -6,17 +6,34 @@
 #include "get_info.h"
 
 void make_url(void) {
-    // ticker, url 초기화
+    // ticker, url 초기화    
     strcpy(url, URL);
     strcpy(ticker, "");
 
-    printf("What's ticker? : ");
-    scanf(" %s", ticker);
+    SDL_StartTextInput();
+    SDL_bool done = SDL_FALSE;
+    while (!done)
+    {
+        SDL_Event event;
+        if (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    QuitSearchScreen();
+                    SDL_StopTextInput();
+                    done = SDL_TRUE;
+                    break;
 
-    strncat(url, ticker, strlen(ticker));
-    strncat(url, URL_OPTION, strlen(URL_OPTION));
-    strncat(ticker, JSON, strlen(JSON));
-
+                case SDL_TEXTINPUT:
+                    strcat(ticker, event.text.text);
+                    break;
+            }
+        }
+    }
+    strcat(url, ticker);
+    strcat(url, URL_OPTION);
+    strcat(ticker, JSON);
     i = 0;
     check = 0;
 

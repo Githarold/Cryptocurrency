@@ -8,11 +8,13 @@
 #define GETINFO_H
 
 #include "defs.h"
+#include "init.h"
 #include "input.h"
 
 #define URL_OPTION "&count=1"
 #define JSON ".json"
 
+/* main.h에 정의된 전역 변수 사용 */
 extern int check, i;
 extern char ticker[50];
 extern char url[BUFF_SIZE];

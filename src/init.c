@@ -51,29 +51,19 @@ void QuitTTF(void) {
 
 void InitMemorySet(void) {
     memset(&app, 0, sizeof(App));
-    memset(&chart, 0, sizeof(App));
-    memset(&chart_kkori, 0, sizeof(App));
-    memset(&layout, 0, sizeof(App));
-    memset(&coin_price_board, 0, sizeof(App));
-    memset(&left_money_board, 0, sizeof(App));
-    memset(&buy_price_board, 0, sizeof(App));
-    memset(&liquidation_money_board, 0, sizeof(App));
-    memset(&rate_of_return_board, 0, sizeof(App));
-    memset(&profits_board, 0, sizeof(App));
-
+    memset(&chart, 0, sizeof(Entity));
+    memset(&chart_kkori, 0, sizeof(Entity));
+    memset(&layout, 0, sizeof(Entity));
+    memset(&coin_price_board, 0, sizeof(Text));
+    memset(&left_money_board, 0, sizeof(Text));
+    memset(&buy_price_board, 0, sizeof(Text));
+    memset(&liquidation_money_board, 0, sizeof(Text));
+    memset(&rate_of_return_board, 0, sizeof(Text));
+    memset(&profits_board, 0, sizeof(Text));
+    memset(&search, 0, sizeof(App));
 
     return;
 }
-// extern Entity chart_kkori[30];
-// extern Entity chart_volume[30];
-// extern Entity layout;
-
-// extern Text left_money_board;
-// extern Text left_money_board;
-// extern Text buy_money_board;
-// extern Text liquidation_money_board;
-// extern Text rate_of_return_board;
-// extern Text profits_board;
 
 void InitChart(void) {
     for(int i = 0 ; i < 30 ; i++)
@@ -161,6 +151,45 @@ void InitScoreBoard(void)
     profits_board.pos.w = 70;
     profits_board.pos.h = 25;
 
+
+    return;
+}
+
+void InitSearchScreen(void)
+{
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("[ERROR] in InitSDL(): %s", SDL_GetError());
+        exit(1);
+    }
+    search.window = SDL_CreateWindow("CoinSearch", SDL_WINDOWPOS_UNDEFINED,
+                                  SDL_WINDOWPOS_UNDEFINED, 290,
+                                  50, 0);
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+    search.renderer = SDL_CreateRenderer(search.window, -1, SDL_RENDERER_ACCELERATED);
+    IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+
+    SDL_RenderPresent(search.renderer);
+    SDL_SetRenderDrawColor(search.renderer, 255, 255, 255, 255);
+    SDL_RenderClear(search.renderer);
+
+    search_screen.texture = IMG_LoadTexture(search.renderer, "./gfx/search.png");
+    search_screen.pos.x = 0;
+    search_screen.pos.y = 0;
+    search_screen.pos.w = 290;
+    search_screen.pos.h = 50;
+
+    SDL_QueryTexture(search_screen.texture, NULL, NULL, &(search_screen.pos.w), &(search_screen.pos.h));
+    SDL_RenderCopy(search.renderer, search_screen.texture, NULL, NULL);
+
+    return;
+}
+
+void QuitSearchScreen(void)
+{
+    SDL_DestroyTexture(search_screen.texture);
+    SDL_DestroyRenderer(search.renderer);
+    SDL_DestroyWindow(search.window);
+    SDL_Quit();
 
     return;
 }

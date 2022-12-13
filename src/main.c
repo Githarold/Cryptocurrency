@@ -7,9 +7,10 @@
 #include "main.h"
 
 int main(void) {
+    InitMemorySet();    
+    InitSearchScreen();
     make_url();
     // 초기화
-    InitMemorySet();
     InitSDL();
     InitTTF();
     InitLayout();
@@ -28,16 +29,9 @@ int main(void) {
         }
         data_coef();
         GetInput();
-        // position에 들어가 있을 경우
-        // if (in_position_flag)                // 이거 밑으로 옮김 렌더링 순서때문에 상관없겟지??
-        // {
-        //     calculate_position(leverage);
-        //     DrawPositionInfo();
-        //     // ShowWindow();
-        // }
-        checktime();
         DefineChartHeight();
         DrawChart();
+        // position에 들어가 있을 경우
         if (in_position_flag)
         {
             DrawPositionInfo();            

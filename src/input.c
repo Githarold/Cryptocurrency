@@ -51,7 +51,8 @@ void GetInput(void) {
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
                     if ((mouse_x < 500) && (mouse_y < 50))
                     {
-                        close_position();                        
+                        close_position();
+                        InitSearchScreen();
                         make_url();
                         InitChart();
                     }
@@ -131,7 +132,6 @@ void GetInput(void) {
                         close_position();
                     }
                 }
-                // SDL_GetMouseState(&mouse_x, &mouse_y);
                 break;
             case SDL_MOUSEWHEEL:
                 if(event.wheel.y > 0)
