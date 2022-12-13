@@ -2,20 +2,21 @@
  @file      draw_chart.h
  @brief     차트 구현을 위한 함수 선언
  @author    이태겸
-*/
+ */
+
 #ifndef DRAW_CHART_H
 #define DRAW_CHART_H
 
 #include "defs.h"
 
 /* main.h에 정의된 전역 변수 사용 */
-extern int check;
-extern Data coin_data;
-extern App app;
-extern int i;
 extern short short_long_flag;
+extern int check;
+extern int i;
 extern double buy_price;
 extern double coef_chart, coef_chart_before;
+extern App app;
+extern Data coin_data;
 extern Entity chart[30];
 extern Entity chart_kkori[30];
 extern Entity chart_volume[30];
