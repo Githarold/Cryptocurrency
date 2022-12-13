@@ -51,19 +51,18 @@ void get_info(void) {
     return;
 }
 
-void data_processing(void) {
+int data_processing(void) {
     // 결과로 저장된 json파일을 파싱할 수 있도록 json_object 구조체의 객체들을 만든다.
     json_object *chart_data = json_object_from_file(ticker);
-    json_object *data, *trade_price, *opening_price, *high_price, *low_price, *candle_acc_trade_volume, *candle_date_time_kst;
-
     if (json_object_object_get(chart_data, "error"))
     {
-        printf("Invalid ticker!!!\n");
+        printf("[error] Invalid ticker!!!\n");
         make_url();
-        get_info();
-        json_object *chart_data = json_object_from_file(ticker);
+        return 1;
     }
+
     // 각 key값에 맞는 값들을 받아오는 데이터 파싱을 진행한다.
+    json_object *data, *trade_price, *opening_price, *high_price, *low_price, *candle_acc_trade_volume, *candle_date_time_kst;
     data = json_object_array_get_idx(chart_data, 0);
     trade_price = json_object_object_get(data, "trade_price");
     opening_price = json_object_object_get(data, "opening_price");
@@ -82,7 +81,7 @@ void data_processing(void) {
     // coin_data.candle_date_time_kst[19] = *json_object_get_string(candle_date_time_kst); 
     strcpy(coin_data.candle_date_time_kst, json_object_get_string(candle_date_time_kst));
 
-    return;
+    return 0;
 }
 
 void data_coef(void) {

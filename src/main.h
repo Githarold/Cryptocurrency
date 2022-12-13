@@ -1,7 +1,7 @@
 /**
  @file      main.h
  @brief     각 모듈 헤더 파일 include 및 전역 변수 선언
- @author    이승헌
+ @author    이승헌, 이태겸
 */
 
 #ifndef MAIN_H
