@@ -13,8 +13,8 @@
 #include "get_info.h"
 
 /* input.c에서 사용할 변수 정의 */
-short trade_rate_on_flag;
-int leverage_on_flag;
+short trade_rate_on_flag;               // 투자비율 선택이 되었는지 확인하기 위한 플래그
+int leverage_on_flag;                   // 배율 선택이 되었는지 확인하기 위한 플래그
 
 /* main.h에 정의된 전역 변수 사용 */
 extern App app;
@@ -22,7 +22,8 @@ extern Data data;
 extern Entity layout;
 extern char ticker[50];
 extern char url[BUFF_SIZE];
-extern short in_position_flag, short_long_flag;
+extern short in_position_flag;
+extern short short_long_flag;
 extern int mouse_x, mouse_y, i;
 extern int leverage;
 extern float trade_rate;
@@ -41,7 +42,6 @@ extern Text profits_board;
 
  1. 창닫기 버튼을 누르면 프로그램 종료
  2. 마우스 이벤트 발생 시 좌표를 받고 클릭한 범위에 대해 처리
- 3. 마우스 휠을 드래그 할 시 차트 확대 / 축소 실행
 
  @return 리턴 값 없음
 */
