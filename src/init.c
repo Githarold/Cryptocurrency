@@ -65,7 +65,7 @@ void InitMemorySet(void) {
 }
 
 void InitChart(void) {
-    for(int i = 0 ; i < 30 ; i++)
+    for(int i = 0 ; i < 40 ; i++)
     {
         chart[i].pos.x = i*20;
         chart[i].pos.y = CHART_HEIGHT/2;

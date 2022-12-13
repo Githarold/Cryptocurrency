@@ -1,7 +1,7 @@
 /**
  @file      init.h
  @brief     무한 루프 진입 전 객체 및 SDL 요소 초기화를 위한 함수 선언
- @author    이승헌
+ @author    공동
 */
 
 #ifndef INIT_H
@@ -11,9 +11,9 @@
 
 extern App app;
 extern Data data;
-extern Entity chart[30];
-extern Entity chart_kkori[30];
-extern Entity chart_volume[30];
+extern Entity chart[40];
+extern Entity chart_kkori[40];
+extern Entity chart_volume[40];
 extern Entity layout;
 
 extern Text coin_price_board;

@@ -20,13 +20,13 @@
 #include "SDL2/SDL_ttf.h"
 #include "SDL2/SDL_rect.h"
 
-#define BUFF_SIZE 1024      // 문자열 버퍼 크기 800, 600
-#define SCREEN_WIDTH 1100     // 화면 너비(픽셀)
-#define SCREEN_HEIGHT 768   // 화면 높이(픽셀)
-#define TICK_INTERVAL 60000
-#define CHART_WIDTH 800
-#define CHART_HEIGHT 600
-#define URL "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"
+#define BUFF_SIZE 1024          // 문자열 버퍼 크기 800, 600
+#define SCREEN_WIDTH 1100       // 화면 너비(픽셀)
+#define SCREEN_HEIGHT 768       // 화면 높이(픽셀)
+#define TICK_INTERVAL 60000 
+#define CHART_WIDTH 800         // 차트 표현할 공간 너비(픽셀)
+#define CHART_HEIGHT 600        // 차트 표현할 공간 높이(픽셀)
+#define URL "https://api.upbit.com/v1/candles/minutes/1?market=KRW-"        // 파싱할 데이터가 담긴 URL
 
 /* 구조체 정의 */
 /**
@@ -42,12 +42,11 @@ typedef struct {
  @brief  Text : 프로그램 내에 문자열을 표시할 경우 문자열을 나타내는 구조체
 */
 typedef struct {
-    SDL_Rect pos;           // 직사각형 객체의 상태를 나타내기 위한 구조체
-    SDL_Color color;        // 글씨 색깔을 저장하는 구조체
-    SDL_Surface *surface;   // 폰트 렌더링을 위해 필요한 구조체
-    SDL_Texture *texture;   // 텍스쳐를 담고 있는 구조체 (문자열을 surface로 만들고 texture에 저장)
-    char value_text[BUFF_SIZE];
-    double value;
+    SDL_Rect pos;               // 직사각형 객체의 상태를 나타내기 위한 구조체
+    SDL_Color color;            // 글씨 색깔을 저장하는 구조체
+    SDL_Surface *surface;       // 폰트 렌더링을 위해 필요한 구조체
+    SDL_Texture *texture;       // 텍스쳐를 담고 있는 구조체 (문자열을 surface로 만들고 texture에 저장)
+    char value_text[BUFF_SIZE]; // 문자열을 텍스쳐로 만들기 위해 필요한 문자열
 } Text;
 
 /**

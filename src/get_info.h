@@ -1,7 +1,7 @@
 /**
  @file      get_info.h
  @brief     데이터 수신부
- @author    이승헌
+ @author    공동
 */
 
 #ifndef GETINFO_H
@@ -24,9 +24,9 @@ extern double coef_chart, coef_chart_before;
 extern double buy_price;
 extern App app;
 extern Data coin_data;
-extern Entity chart[30];
-extern Entity chart_kkori[30];
-extern Entity chart_volume[30];
+extern Entity chart[40];
+extern Entity chart_kkori[40];
+extern Entity chart_volume[40];
 
 extern Text coin_price_board;
 extern Text left_money_board;
@@ -69,18 +69,14 @@ int data_processing(void);
 */
 void data_coef(void);
 
-
 /**
- @brief 게임 오버 시 최종 스코어 문자열 생성 (전역변수 score에 따라
-        최종 점수 표시)
+ @brief 코인 가격, 시드, 포지션 정보를 담고있는 문자열 생성 
 
- 게임 오버 시 결과창에 띄울 문자열 "Your Final Score: [최종 점수]"을 만들고
- \ref score_board 의 texture에 저장한다.
+ 화면에 표시할 포지션 진입 후 남은 시드, 입력한 티커에 해당하는 코인의 현재 가격, 매수가, 청산가, 수익률, 수익금의 정보를 추출 및 가공
 
- @remark 전역 변수 \ref score_board, \ref app, \ref score_text, \ref score 에 접근한다.
+ 추출 및 가공한 정보를 Text 타입 구조체에 각각 할당 
 
  @return 리턴 값 없음
- @ingroup Action
 */
 void GetBoardInfo(void);
 

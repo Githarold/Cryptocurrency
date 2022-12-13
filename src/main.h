@@ -33,9 +33,9 @@ double coef_chart, coef_chart_before;
 App app;
 Data coin_data;
 Entity layout;
-Entity chart[30];
-Entity chart_kkori[30];
-Entity chart_volume[30];
+Entity chart[40];
+Entity chart_kkori[40];
+Entity chart_volume[40];
 
 
 

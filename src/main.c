@@ -28,6 +28,7 @@ int main(void) {
         }
         data_coef();
         GetInput();
+        checktime();
         DefineChartHeight();
         DrawChart();
         // position에 들어가 있을 경우

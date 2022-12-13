@@ -17,9 +17,9 @@ extern double buy_price;
 extern double coef_chart, coef_chart_before;
 extern App app;
 extern Data coin_data;
-extern Entity chart[30];
-extern Entity chart_kkori[30];
-extern Entity chart_volume[30];
+extern Entity chart[40];
+extern Entity chart_kkori[40];
+extern Entity chart_volume[40];
 extern Entity layout;
 extern Text coin_price_board;
 extern Text left_money_board;
@@ -51,7 +51,8 @@ void ShowWindow(void);
  @brief 업비트에서의 시간 측정(업비트 시간으로 1분이 지났는지 확인)
 
  받아오는 데이터 중 시간데이터(candle_date_time_kst, 문자열)를 이전값과 비교
- 1분이 지났음을 확인하면 움직이게 될 chart를 바꿔준다.
+ 1분이 지났음을 확인하면 i값을 증가시켜 움직이게 될 chart를 바꿔준다. 
+ FixChart를 호출하여 시간이 어느정도 흐른 후 부터는 시간이 지날 때마다 차트를 좌측으로 한 칸씩 밀어 위치를 고정시킨다. 
 
  @return 리턴 값 없음
 */
@@ -87,7 +88,7 @@ void DefineChartHeight(void);
  하나의 이미지로 다양한 사각형을 표현하기 위해 SDL_RenderCopy함수만 사용하였다.
  실시간 가격에 의해 기준점과 높이가 결정되고 이를 바탕으로 동적인 차트를 구현하였다.
 
- @return 리턴 값 없음
+ @return 리턴 값 없음 
 */
 void RenderChart(Entity *object);
 
@@ -129,4 +130,13 @@ void RenderPositionBoard(Text *object);
 */
 void DrawPositionInfo(void);
 
+/**
+ @brief 일정 시간 후에 차트 위치 고정
+ 시간이 지남에 따라 차트는 오른쪽으로 움직이지만 차트를 표현할 공간(가로 800, 세로 600)은 제한적이다. 따라서 차트가 x = 600를 넘어가지 못하게 고정한다.
+ 하나의 봉은 20의 가로 길이를 갖는다. 따라서 x = 600 까지는 봉이 40개 존재할 수 있고 총 40분간의 가격 data밖에 담지 못한다는 단점이 있다. 
+ 이를 보완하기 위해 40개의 봉이 모두 움직이게 되면(40분이 지나게 되면) 1분이 지날 때마다 차트가 좌측으로 한 칸씩 밀리게 하였다.
+
+ @return 리턴 값 없음
+*/
+void FixChart(void);
 #endif

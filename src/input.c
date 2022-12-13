@@ -17,7 +17,7 @@ void GetInput(void) {
             // 창닫기 버튼을 누른 경우
             case SDL_QUIT:
                 SDL_DestroyTexture(layout.texture);
-                for (i=0 ; i<60 ; i++)
+                for (i=0 ; i<40 ; i++)
                 {
                     SDL_DestroyTexture(chart[i].texture);
                     SDL_DestroyTexture(chart_kkori[i].texture);                    
@@ -132,25 +132,7 @@ void GetInput(void) {
                     }
                 }
                 break;
-            case SDL_MOUSEWHEEL:
-                if(event.wheel.y > 0)
-                {
-                    // scroll up, 차트 창이 나타내는 가격 범위가 줄어들어야함 -> 최대 최소 퍼센트값 감소
-                    max_min_percent -= 0.1;
-                    if (max_min_percent < 1)
-                    {
-                        max_min_percent = 1;
-                    }
-                }
-                else if(event.wheel.y < 0)
-                {
-                    // scroll down// 차트 창이 나타내는 가격 범위가 늘어나야함 -> 최대 최소 퍼센트값 증가
-                    max_min_percent += 0.1;
-                    if (max_min_percent > 7)
-                    {
-                        max_min_percent = 7;
-                    }
-                }
+            
             default:
                 break;
         }

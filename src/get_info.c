@@ -133,11 +133,6 @@ void data_coef(void) {
     }
 
     // 가격 차트의 변동을 명확하게 보여주기 위해 변환을 실행한다.
-    // coin_data.low_coef = (coin_data.low_price-0.97*coin_data.pro_opening_price)*CHART_HEIGHT*((double)100/6)/coin_data.pro_opening_price;
-    // coin_data.high_coef = (coin_data.high_price-0.97*coin_data.pro_opening_price)*CHART_HEIGHT*((double)100/6)/coin_data.pro_opening_price;
-    // coin_data.trade_coef = (coin_data.trade_price-0.97*coin_data.pro_opening_price)*CHART_HEIGHT*((double)100/6)/coin_data.pro_opening_price;
-    // coin_data.opening_coef = (coin_data.opening_price-0.97*coin_data.pro_opening_price)*CHART_HEIGHT*((double)100/6)/coin_data.pro_opening_price;
-
     coin_data.low_coef = (coin_data.low_price-(1-max_min_percent/100)*coin_data.pro_opening_price)*CHART_HEIGHT*(50/max_min_percent)/coin_data.pro_opening_price;
     coin_data.high_coef = (coin_data.high_price-(1-max_min_percent/100)*coin_data.pro_opening_price)*CHART_HEIGHT*((50/max_min_percent))/coin_data.pro_opening_price;
     coin_data.trade_coef = (coin_data.trade_price-(1-max_min_percent/100)*coin_data.pro_opening_price)*CHART_HEIGHT*((50/max_min_percent))/coin_data.pro_opening_price;
