@@ -1,8 +1,9 @@
 /**
  @file      get_info.c
  @brief     url 생성 및 데이터 수신 함수를 정의한 소스 파일
- @author    이승헌
+ @author    이승헌, 이태겸
  */
+
 #include "get_info.h"
 
 void make_url(void) {
@@ -14,6 +15,7 @@ void make_url(void) {
     SDL_bool done = SDL_FALSE;
     while (!done)
     {
+        SDL_RenderCopy(app.renderer, search.texture, NULL, &(search.pos));
         SDL_Event event;
         if (SDL_PollEvent(&event))
         {
@@ -22,9 +24,8 @@ void make_url(void) {
                 case SDL_QUIT:
                     done = SDL_TRUE;
                     break;
-                    
+
                 case SDL_TEXTINPUT:
-                    printf("While...\n %s", event.text.text);
                     strcat(ticker, event.text.text);
                     break;
             }
@@ -34,8 +35,6 @@ void make_url(void) {
     strcat(url, ticker);
     strcat(url, URL_OPTION);
     strcat(ticker, JSON);
-
-    printf("%s\n%s\n", ticker, url);
 
     i = 0;
     check = 0;

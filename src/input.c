@@ -1,7 +1,7 @@
 /**
  @file      input.c
  @brief     키보드 입력 발생 시 처리하는 함수 정의
- @author    이태겸
+ @author    이승헌, 이태겸
  */
 
 #include "input.h"
@@ -31,6 +31,7 @@ void GetInput(void) {
                 
                 SDL_DestroyTexture(chart_volume->texture);
                 SDL_DestroyTexture(layout.texture);
+                SDL_DestroyTexture(search.texture);
 
                 SDL_FreeSurface(left_money_board.surface);
                 SDL_FreeSurface(coin_price_board.surface);

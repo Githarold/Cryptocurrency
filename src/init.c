@@ -1,8 +1,9 @@
 /**
  @file      init.c
  @brief     무한 루프 진입 전 객체 및 SDL 요소 초기화를 위한 함수 정의
- @author    이승헌
-*/
+ @author    이승헌, 이태겸
+ */
+
 #include "init.h"
 
 void InitSDL(void) {
@@ -54,6 +55,7 @@ void InitMemorySet(void) {
     memset(&chart, 0, sizeof(Entity));
     memset(&chart_kkori, 0, sizeof(Entity));
     memset(&layout, 0, sizeof(Entity));
+    memset(&search, 0, sizeof(Entity));
     memset(&coin_price_board, 0, sizeof(Text));
     memset(&left_money_board, 0, sizeof(Text));
     memset(&buy_price_board, 0, sizeof(Text));
@@ -96,6 +98,8 @@ void InitLayout(void)
     layout.pos.y = 0;
     layout.pos.h = SCREEN_HEIGHT;
     layout.pos.w = SCREEN_WIDTH;
+
+    return;
 }
 
 void InitScoreBoard(void)
@@ -155,9 +159,11 @@ void InitScoreBoard(void)
 
 void InitSearchCoin(void)
 {
-    layout.texture = IMG_LoadTexture(app.renderer, "./gfx/layout.png");
-    layout.pos.x = 0;
-    layout.pos.y = 0;
-    layout.pos.h = SCREEN_HEIGHT;
-    layout.pos.w = SCREEN_WIDTH;
+    search.texture = IMG_LoadTexture(app.renderer, "./gfx/search.png");
+    search.pos.x = 0;
+    search.pos.y = 0;
+    search.pos.w = 280;
+    search.pos.h = 50;
+
+    return;
 }

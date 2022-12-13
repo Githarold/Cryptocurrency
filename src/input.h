@@ -1,9 +1,9 @@
 /**
  @file      input.h
  @brief     마우스 입력 발생 시 처리하는 함수 선언
- @author    이태겸
-
+ @author    이승헌, 이태겸
  */
+
 #ifndef INPUT_H
 #define INPUT_H
 

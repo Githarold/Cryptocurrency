@@ -1,8 +1,8 @@
 /**
  @file      get_info.h
  @brief     데이터 수신부
- @author    공동
-*/
+ @author    이승헌, 이태겸
+ */
 
 #ifndef GETINFO_H
 #define GETINFO_H
@@ -24,6 +24,7 @@ extern double coef_chart, coef_chart_before;
 extern double buy_price;
 extern App app;
 extern Data coin_data;
+extern Entity search;
 extern Entity chart[40];
 extern Entity chart_kkori[40];
 extern Entity chart_volume[40];

@@ -2,7 +2,7 @@
  @file      main.h
  @brief     각 모듈 헤더 파일 include 및 전역 변수 선언
  @author    이승헌, 이태겸
-*/
+ */
 
 #ifndef MAIN_H
 #define MAIN_H
@@ -33,13 +33,10 @@ double coef_chart, coef_chart_before;
 App app;
 Data coin_data;
 Entity layout;
+Entity search;
 Entity chart[40];
 Entity chart_kkori[40];
 Entity chart_volume[40];
-
-
-
-
 
 // 레이아웃 상의 position 박스에 쓰일 텍스트 
 
@@ -49,7 +46,5 @@ Text buy_price_board;
 Text liquidation_money_board;
 Text rate_of_return_board;
 Text profits_board;
-
-
 
 #endif
