@@ -34,7 +34,6 @@ void checktime(void)
     if(strcmp(coin_data.candle_date_time_kst, coin_data.candle_date_time_kst_check))            // 1분마다 초기화되는 문자열과 실시간으로 초기화되는 문자열을 비교하여 시간이 지났음을 파악
     {
         i++;
-        printf("i = %d\n", i);   
         strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);           // coin_data.candle_date_time_kst_check 는 1분마다 초기화되는 값
         FixChart();                                                                             // coin_data.candle_date_time_kst 는 실시간으로 초기화되는 값
         SDL_Delay(100); 
