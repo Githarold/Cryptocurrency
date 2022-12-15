@@ -162,7 +162,7 @@ void InitSearchCoin(void)
     search.texture = IMG_LoadTexture(app.renderer, "./gfx/search.png");
     search.pos.x = 0;
     search.pos.y = 0;
-    search.pos.w = 280;
+    search.pos.w = 290;
     search.pos.h = 50;
 
     return;

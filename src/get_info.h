@@ -10,6 +10,7 @@
 #include "defs.h"
 #include "init.h"
 #include "input.h"
+#include "draw_chart.h"
 
 #define URL_OPTION "&count=1"
 #define JSON ".json"

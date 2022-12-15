@@ -14,7 +14,6 @@
 #include "trade.h"
 #include "get_info.h"
 #include "draw_chart.h"
-// #include "action.h"
 
 /* 사용하는 전역 변수 */
 char ticker[50];
@@ -25,7 +24,7 @@ int i, check;
 int leverage;
 int mouse_x, mouse_y;
 float trade_rate;
-double left_money = 1000000.0;
+double left_money = 10000000.0;
 double coef;
 double max_min_percent = 3;
 double coef_chart, coef_chart_before;

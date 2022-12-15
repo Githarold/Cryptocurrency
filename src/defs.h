@@ -19,6 +19,8 @@
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_ttf.h"
 #include "SDL2/SDL_rect.h"
+#include "SDL2/SDL_video.h"
+#include "SDL2/SDL_timer.h"
 
 #define BUFF_SIZE 1024          // 문자열 버퍼 크기 800, 600
 #define SCREEN_WIDTH 1100       // 화면 너비(픽셀)

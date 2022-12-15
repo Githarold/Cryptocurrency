@@ -15,7 +15,6 @@ int main(void) {
     InitLayout();
     InitChart();
     InitBoard();
-    ClearWindow();  // debug
     make_url();
 
     ShowWindow();
