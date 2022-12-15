@@ -28,7 +28,6 @@ extern Entity search;
 extern Entity chart[40];
 extern Entity chart_kkori[40];
 extern Entity chart_volume[40];
-
 extern Text coin_price_board;
 extern Text left_money_board;
 extern Text buy_price_board;

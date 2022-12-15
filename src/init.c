@@ -67,7 +67,7 @@ void InitMemorySet(void) {
 }
 
 void InitChart(void) {
-    for(int i = 0 ; i < 40 ; i++)
+    for(int i = 0 ; i < 40 ; i++)       // 차트를 구성하는 모든 객체에 대해 초기화
     {
         chart[i].pos.x = i*20;
         chart[i].pos.y = CHART_HEIGHT/2;
@@ -102,16 +102,16 @@ void InitLayout(void)
     return;
 }
 
-void InitScoreBoard(void)
+void InitBoard(void)
 {
-    coin_price_board.color.r = 0;       // 실시간 코인 가격를 시각화하여 보여줌
+    coin_price_board.color.r = 0; 
     coin_price_board.color.g = 0;
     coin_price_board.color.b = 0;
     coin_price_board.color.a = 255;
     coin_price_board.pos.x = 550;
     coin_price_board.pos.y = 11;
 
-    left_money_board.color.r = 0;       // 포지션 투입 후 남은 금액 보여줌 
+    left_money_board.color.r = 0;     
     left_money_board.color.g = 0;
     left_money_board.color.b = 0;
     left_money_board.color.a = 255;

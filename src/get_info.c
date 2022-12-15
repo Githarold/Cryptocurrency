@@ -96,35 +96,39 @@ int data_processing(void) {
     coin_data.high_price = atof(json_object_get_string(high_price));
     coin_data.low_price = atof(json_object_get_string(low_price));
     coin_data.candle_acc_trade_volume = atof(json_object_get_string(candle_acc_trade_volume));
-    strcpy(coin_data.candle_date_time_kst, json_object_get_string(candle_date_time_kst));
+
+    // coin_data 구조체의 시간정보를 담는 멤버를 실시간 값으로 초기화 + 데이터 파싱 결과(문자열)을 문자열 구조체 멤버에 카피하여 저장해준다.
+    strcpy(coin_data.candle_date_time_kst, json_object_get_string(candle_date_time_kst));            
 
     return 0;
 }
 
 void data_coef(void) {
-    if(check == 0)
+    // 밑에 세 개의 조건문은 프로그램 실행시 딱 한 번만 실행되어야 하므로 이 조건문 이외에 사용되지 않는 check 변수를 활용하여 구동시킨다.  
+    if(check == 0)                                                                          
     {
-        strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);
-        printf("Let");
+        strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);       // 프로그램을 실행했을 때의 시간을 추출한다.
+        printf("Let");                                                                      // 추출한 데이터는 draw_chart 소스파일의 check_time() 함수에서 사용한다.
         check++;
         
     }
     if(check == 1)
     {
-        coin_data.pro_opening_price = coin_data.trade_price;
-        printf("'s");
+        coin_data.pro_opening_price = coin_data.trade_price;                                // 프로그램을 실행했을 때의 가격을 추출한다. 
+        printf("'s");                                                                       // 추출한 데이터는 line 138에서 차트 변환을 할 때 사용한다.
         check++;
     }
     if(check == 2)
     {
-        coin_data.candle_acc_trade_volume_high = coin_data.candle_acc_trade_volume;
+        coin_data.candle_acc_trade_volume_high = coin_data.candle_acc_trade_volume;         // 프로그램을 실행했을 때의 거래량을 추출하여 최고 거래량에 저장한다. 
+                                                                                            // 이후에 더 큰 거래량이 나와 거래량 차트를 변환해야 할 때 사용한다.
+        printf(" go!\n");                   
+        coef_chart = (SCREEN_HEIGHT - CHART_HEIGHT)/coin_data.candle_acc_trade_volume_high; // 최고 거래량이 항상 168의 높이를 갖게 하도록 하는 변수 
+        coef_chart_before = coef_chart;                                                     // 새로운 거래량이 나오게 되면 이전 거래량 차트를 변환해야 한다.
+        check++;                                                                            // 하지만 이전 거래량 차트는 현재 새로 갱신된 coef값이 아니라 과거의 coef값을 통해 변환이 이루어졌다
+    }                                                                                       // 따라서 새로운 coef값이 갱신될 때 이전의 coef값 또한 저장하고 있는다.
 
-        printf(" go!\n");
-        coef_chart = (SCREEN_HEIGHT - CHART_HEIGHT)/coin_data.candle_acc_trade_volume_high;
-        coef_chart_before = coef_chart;
-        check++;
-    }
-    if(coin_data.candle_acc_trade_volume_high <= coin_data.candle_acc_trade_volume)
+    if(coin_data.candle_acc_trade_volume_high <= coin_data.candle_acc_trade_volume)         // 새로운 거래량이 나왔을 때 coef값을 갱신해주고 이전 coef값을 저장 
     {
         coin_data.candle_acc_trade_volume_high = coin_data.candle_acc_trade_volume;
         coef_chart_before = coef_chart;
@@ -145,49 +149,56 @@ void data_coef(void) {
 
 void GetBoardInfo(void) 
 {
-    sprintf(left_money_board.value_text, "%.0lf", left_money);
-    strcat(left_money_board.value_text, "  KRW");
+    // 남은 잔고 표현하는 TEXT
+    sprintf(left_money_board.value_text, "%.0lf", left_money);                                  // trade 소스파일에서 계산된 left_money의 값을 해당 구조체의 문자열에 저장
+    strcat(left_money_board.value_text, "  KRW");                                               // ex) 100 -> 100  원
     left_money_board.surface =
         TTF_RenderText_Solid(app.font, left_money_board.value_text, left_money_board.color);
     left_money_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, left_money_board.surface);
 
-    sprintf(coin_price_board.value_text, "%.1lf", coin_data.trade_price);
+    // 현재 열람중인 코인의 실시간 가격을 표현하는 TEXT
+    sprintf(coin_price_board.value_text, "%.1lf", coin_data.trade_price);                       // data_processing에서 가공된 현재 코인 가격 데이터를 해당 구조체의 문자열에 저장
     strcat(coin_price_board.value_text, "  KRW");
     coin_price_board.surface =
         TTF_RenderText_Solid(app.font, coin_price_board.value_text, coin_price_board.color);
     coin_price_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, coin_price_board.surface);
-
-    sprintf(buy_price_board.value_text, "%.1lf", buy_price);
+    
+    // 진입한 포지션의 정보 중 매수가를 표현하는 TEXT
+    sprintf(buy_price_board.value_text, "%.1lf", buy_price);                                    // trade 소스파일에서 계산된 buy_price의 값을 해당 구조체의 문자열에 저장
     buy_price_board.surface =
         TTF_RenderText_Solid(app.font, buy_price_board.value_text, buy_price_board.color);
     buy_price_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, buy_price_board.surface);
 
-    sprintf(liquidation_money_board.value_text, "%.1lf", liquidation_price);
+    // 진입한 포지션의 정보 중 청산가를 표현하는 TEXT
+    sprintf(liquidation_money_board.value_text, "%.1lf", liquidation_price);                    // trade 소스파일에서 계산된 liquidation_price의 값을 해당 구조체의 문자열에 저장
     liquidation_money_board.surface =
         TTF_RenderText_Solid(app.font, liquidation_money_board.value_text, liquidation_money_board.color);
     liquidation_money_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, liquidation_money_board.surface);
 
-    sprintf(rate_of_return_board.value_text, "%.4lf", rate_of_return);
-    strcat(rate_of_return_board.value_text, " %");     // 이거 warning뜨는거 무시하셈 %%하면 %%둘다붙어서 나옴
+    // 진입한 포지션의 정보 중 수익률을 표현하는 TEXT
+    sprintf(rate_of_return_board.value_text, "%.4lf", rate_of_return);                          // trade 소스파일에서 계산된 rate_of_return의 값을 해당 구조체의 문자열에 저장
+    strcat(rate_of_return_board.value_text, " %");                                              // ex) 100 -> 100 %
     rate_of_return_board.surface =
         TTF_RenderText_Solid(app.font, rate_of_return_board.value_text, rate_of_return_board.color);
     rate_of_return_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, rate_of_return_board.surface);
     
-    sprintf(profits_board.value_text, "%.1lf", profits);
-    if((int)profits == 0)
-    {
-        strcat(profits_board.value_text, "          ");
-    }
+    // 진입한 포지션의 정보 중 수익금을 표현하는 TEXT
+    sprintf(profits_board.value_text, "%.1lf", profits);                                        // trade 소스파일에서 계산된 profits의 값을 해당 구조체의 문자열에 저장
+
+    if((int)profits == 0)                                                                       // profits을 표현할 칸이 글씨체 크기 22로 표현하기에 너무 작기 때문에 width와 height를 조정하여 글씨 크기를 바꿔주었음
+    {                                                                                           // 기본 잔고가 백만원으로 주어지기 때문에 수익금은 기본적으로 만원 단위가 넘어감
+        strcat(profits_board.value_text, "          ");                                         // 이를 생각해서 width를 조정하면 수익금이 0원일때 글씨가 어색하게 출력되는 문제가 있음
+    }                                                                                           // 수익금이 0원일 때 뒤에 공백 문자를 붙여 문제 해결 
+                                                                                                
     profits_board.surface =
         TTF_RenderText_Solid(app.font, profits_board.value_text, profits_board.color);
     profits_board.texture =
         SDL_CreateTextureFromSurface(app.renderer, profits_board.surface);
-        // buy_money_board.pos
 
     return;
 }

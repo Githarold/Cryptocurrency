@@ -14,7 +14,7 @@ int main(void) {
     InitTTF();
     InitLayout();
     InitChart();
-    InitScoreBoard();
+    InitBoard();
     ClearWindow();  // debug
     make_url();
 
