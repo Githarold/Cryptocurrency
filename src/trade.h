@@ -10,6 +10,7 @@
 #include "defs.h"
 #include "init.h"
 #include "input.h"
+#include "draw_chart.h"
 
 /* trade.c에서 사용할 변수 정의 */
 double profits;                    // 수익금 

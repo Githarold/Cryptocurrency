@@ -20,6 +20,8 @@ int leverage_on_flag;                   // 배율 선택이 되었는지 확인�
 extern App app;
 extern Data data;
 extern Entity layout;
+extern Entity position_picture;
+extern Entity profit_picture;
 extern char ticker[50];
 extern char url[BUFF_SIZE];
 extern short in_position_flag;
@@ -28,6 +30,7 @@ extern int mouse_x, mouse_y, i;
 extern int leverage;
 extern float trade_rate;
 extern double max_min_percent;
+extern int draw_flag;
 
 extern Text coin_price_board;
 extern Text left_money_board;

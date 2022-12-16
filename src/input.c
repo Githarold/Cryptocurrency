@@ -27,6 +27,9 @@ void GetInput(void) {
                 SDL_DestroyTexture(chart_volume->texture);
                 SDL_DestroyTexture(layout.texture);
                 SDL_DestroyTexture(search.texture);
+                SDL_DestroyTexture(position_picture.texture);
+                SDL_DestroyTexture(profit_picture.texture);
+
                 for (i = 0 ; i < 40 ; i++)
                 {
                     SDL_DestroyTexture(chart[i].texture);
@@ -50,6 +53,7 @@ void GetInput(void) {
                 {
                     mouse_x = event.button.x;
                     mouse_y = event.button.y;
+                    printf("x : %d, y : %d\n ",mouse_x, mouse_y);
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
                     if ((mouse_x < 500) && (mouse_y < 50))
                     {
@@ -130,9 +134,15 @@ void GetInput(void) {
                         }                        
                     }
                     // 포지션 청산 버튼을 클릭한 경우 포지션 청산 진행
-                    else if ((mouse_x > 830) && (mouse_y > 737) && (mouse_x < 1075) && (mouse_y < 764))
+                    else if ((mouse_x > 860) && (mouse_y > 722) && (mouse_x < 1046) && (mouse_y < 760))
                     {
+                        if(in_position_flag)
+                        {
+                            draw_flag = 1;
+                        }
                         close_position();
+                        // DrawProfitPicture();
+                        
                     }
                 }
                 break;

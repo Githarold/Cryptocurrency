@@ -6,6 +6,7 @@
 
 #include "trade.h"
 
+
 void open_position(float trade_rate, int leverage)
 {
     in_position_flag = 1;   // in_position_flag를 1로 변경하여 포지션을 가지고 있음을 표시
@@ -29,6 +30,8 @@ void open_position(float trade_rate, int leverage)
 void close_position(void)
 {
     // 포지션 청산 시 잔고에 (투자금 + 수익금)을 더해줌. (0.1 * 배율)의 수수료 적용(Binance 선물거래 기준)
+    // DrawProfitPicture();
+
     left_money += ((1 - 0.001 * leverage) * (trade_money + profits));
     
     profits = 0.0;          //
@@ -36,7 +39,7 @@ void close_position(void)
     trade_money = 0;        //
 
     in_position_flag = 0;   // 포지션을 가지고 있지 않음을 표시
-
+    
     return;
 }
 

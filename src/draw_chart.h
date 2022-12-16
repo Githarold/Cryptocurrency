@@ -15,18 +15,24 @@ extern int check;
 extern int i;
 extern double buy_price;
 extern double coef_chart, coef_chart_before;
+extern double rate_of_return;
+extern int draw_count;
+extern int draw_flag;
 extern App app;
 extern Data coin_data;
 extern Entity layout;
 extern Entity chart[40];
 extern Entity chart_kkori[40];
 extern Entity chart_volume[40];
+extern Entity position_picture;
+extern Entity profit_picture;
 extern Text coin_price_board;
 extern Text left_money_board;
 extern Text buy_price_board;
 extern Text liquidation_money_board;
 extern Text rate_of_return_board;
 extern Text profits_board;
+
 
 /**
  @brief 배경을 흰색으로 지정하고 화면에 렌더링된 모든 요소 제거
@@ -139,4 +145,10 @@ void DrawPositionInfo(void);
  @return 리턴 값 없음
 */
 void FixChart(void);
+
+void DrawPositionPicture(void);
+
+void DrawProfitPicture(void);
+
+void RenderPosPic(Entity *object);
 #endif

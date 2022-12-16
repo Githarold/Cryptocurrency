@@ -17,12 +17,14 @@ extern Entity search;
 extern Entity chart[40];
 extern Entity chart_kkori[40];
 extern Entity chart_volume[40];
+extern Entity position_picture;
 extern Text coin_price_board;
 extern Text left_money_board;
 extern Text buy_price_board;
 extern Text liquidation_money_board;
 extern Text rate_of_return_board;
 extern Text profits_board;
+extern Entity profit_picture;
 
 /**
  @brief 프로그램 수행에 필요한 초기화 과정 수행

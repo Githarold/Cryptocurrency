@@ -28,15 +28,21 @@ int main(void) {
             continue;
         }
         data_coef();
-        GetInput();
         checktime();
         DefineChartHeight();
         DrawChart();
+        GetInput();
+        
         // position에 들어가 있을 경우
         if (in_position_flag)
         {
             DrawPositionInfo();            
             calculate_position(leverage);
+            DrawPositionPicture();
+        }
+        if (draw_flag)
+        {
+            DrawProfitPicture();
         }
         ShowWindow();
         SDL_Delay(100);
