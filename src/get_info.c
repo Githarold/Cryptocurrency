@@ -26,17 +26,17 @@ void make_url(void)
         {
             switch (event.type)
             {
-            case SDL_QUIT:                      // 창닫기 버튼 클릭시, 티커 입력을 종료하고 반복문을 탈출한다.
-                SDL_SetWindowSize(app.window, SCREEN_WIDTH, SCREEN_HEIGHT);
-                done = SDL_TRUE;                // 반복문 탈출
-                break;
+                case SDL_QUIT:                  // 창닫기 버튼 클릭시, 티커 입력을 종료하고 반복문을 탈출한다.
+                    SDL_SetWindowSize(app.window, SCREEN_WIDTH, SCREEN_HEIGHT);
+                    done = SDL_TRUE;            // 반복문 탈출
+                    break;
 
-            case SDL_TEXTINPUT:                 // 텍스트 입력을 받을 때, 입력받는 문자열을 실시간으로 이어붙인다.
-                strcat(ticker, event.text.text);
-                break;
+                case SDL_TEXTINPUT:             // 텍스트 입력을 받을 때, 입력받는 문자열을 실시간으로 이어붙인다.
+                    strcat(ticker, event.text.text);
+                    break;
             }
-            SDL_Delay(200);
         }
+        SDL_Delay(200);
     }
     SDL_StopTextInput();                        // 티커 입력이 끝났으므로, 키보드 입력 받기를 중단한다.
     strcat(url, ticker);                        //
