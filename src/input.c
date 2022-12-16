@@ -53,7 +53,6 @@ void GetInput(void) {
                 {
                     mouse_x = event.button.x;
                     mouse_y = event.button.y;
-                    printf("x : %d, y : %d\n ",mouse_x, mouse_y);
                     // 마우스로 검색창을 클릭했을 시, 티커를 검색하게 해주는 함수를 실행한다.
                     if ((mouse_x < 500) && (mouse_y < 50))
                     {
