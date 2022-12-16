@@ -37,7 +37,7 @@ void checktime(void)
         strcpy(coin_data.candle_date_time_kst_check, coin_data.candle_date_time_kst);           // coin_data.candle_date_time_kst_check 는 1분마다 초기화되는 값
         FixChart();                                                                             // coin_data.candle_date_time_kst 는 실시간으로 초기화되는 값
         SDL_Delay(100); 
-         
+        
     }
     return;
 }
@@ -53,6 +53,7 @@ void DefineChartHeight(void)
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");         // 
         coin_price_board.color.b = 225;                 // 우측 상단에 표시할 코인의 가격의 색을 파란색으로 지정                              
         coin_price_board.color.r = 0;                   //
+        coin_price_board.color.g = 0;                   //
     }
     else if(coin_data.trade_coef > coin_data.opening_coef)      // 시작가보다 현재가가 높을 때 (양봉)
     {
@@ -63,6 +64,7 @@ void DefineChartHeight(void)
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");           //
         coin_price_board.color.b = 0;                   // 우측 상단에 표시할 코인의 가격의 색을 빨간색으로 지정                              
         coin_price_board.color.r = 225;                 //
+        coin_price_board.color.g = 0;                   //
     }
     else
     {
@@ -70,8 +72,9 @@ void DefineChartHeight(void)
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
-        coin_price_board.color.b = 0;                   // 우측 상단에 표시할 코인의 가격의 색을 검은색으로 지정                              
-        coin_price_board.color.r = 0;                   //
+        coin_price_board.color.b = 255;                   // 우측 상단에 표시할 코인의 가격의 색을 검은색으로 지정                              
+        coin_price_board.color.r = 255;                   //
+        coin_price_board.color.g = 255;                   //
     }
 
     chart[i].pos.h = abs(round(coin_data.trade_coef - coin_data.opening_coef));         // 가격 막대 봉의 높이를 abs(현재가 - 시작가)로 지정
@@ -122,6 +125,58 @@ void DrawChart(void)
     return;
 }
 
+void DrawPositionPicture(void)
+{
+    position_picture.pos.w = 200;
+    position_picture.pos.h = 120;
+    if(short_long_flag)     // long
+    {
+        position_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/long.png");
+    }
+    else                    // short
+    {
+        position_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/short.png");
+    }
+    RenderChart(&position_picture);
+}
+
+void DrawProfitPicture(void)
+{
+    if((rate_of_return > -10) && (rate_of_return < 10))
+    {
+        profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe0.png");
+    }
+    else if((rate_of_return > 10) && (rate_of_return < 20))
+    {
+        profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe+10.png");
+    }
+    else if(rate_of_return > 20)
+    {
+        profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe+20.png");
+    }
+    else if((rate_of_return < -10) && (rate_of_return > -20))
+    {
+        profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe-10.png");
+    }
+    else if(rate_of_return < -20)
+    {
+        profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe-20.png");
+    }
+    SDL_SetTextureAlphaMod(profit_picture.texture, 255 - draw_count);
+    SDL_SetTextureBlendMode(profit_picture.texture, SDL_BLENDMODE_BLEND);        
+    RenderPosPic(&profit_picture);
+    draw_count = draw_count + 10;
+
+    if(draw_count == 250)
+    {
+        draw_flag = 0;
+        draw_count = 0;
+    }
+    printf("%d\n", draw_count);
+    
+    return;
+}
+
 void DrawPositionInfo(void)
 {
     if (buy_price > coin_data.trade_price)           // 매수가 > 현재가의 경우
@@ -130,17 +185,21 @@ void DrawPositionInfo(void)
         {
             rate_of_return_board.color.r = 0;        //
             rate_of_return_board.color.b = 255;      //
+            rate_of_return_board.color.g = 0;      //
                                                      // position 구역에 들어갈 텍스트 색을 파란색으로 지정 
             profits_board.color.r = 0;               //
             profits_board.color.b = 255;             //
+            profits_board.color.g = 0;             //
         }
         else                                         // Short 포지션의 경우 매수가 > 현재가 일때 수익 
         {
             rate_of_return_board.color.r = 255;      // 
             rate_of_return_board.color.b = 0;        //
+            rate_of_return_board.color.g = 0;      //
                                                      // position 구역에 들어갈 텍스트 색을 붉은색으로 지정 
             profits_board.color.r = 255;             //
             profits_board.color.b = 0;               //
+            profits_board.color.g = 0;      //
         }
     }
     else if (buy_price < coin_data.trade_price)      // 매수가 < 현재가의 경우
@@ -149,26 +208,32 @@ void DrawPositionInfo(void)
         {
             rate_of_return_board.color.r = 255;      //
             rate_of_return_board.color.b = 0;        //
+            rate_of_return_board.color.g = 0;        //
                                                      // position 구역에 들어갈 텍스트 색을 붉은색으로 지정 
             profits_board.color.r = 255;             //
             profits_board.color.b = 0;               //
+            profits_board.color.g = 0;               //
         }
         else                                         // Short 포지션의 경우 매수가 < 현재가 일때 손실
         {
             rate_of_return_board.color.r = 0;        //
             rate_of_return_board.color.b = 255;      //
+            rate_of_return_board.color.g = 0;      //
                                                      // position 구역에 들어갈 텍스트 색을 푸른색으로 지정 
             profits_board.color.r = 0;               //
             profits_board.color.b = 255;             //
+            profits_board.color.g = 0;             //
         }
     }
     else                                             // 현재가 = 매수가 인 경우 두 포지션 모두 손실이나 수익 없음
     {
-        rate_of_return_board.color.r = 0;            //
-        rate_of_return_board.color.b = 0;            //
+        rate_of_return_board.color.r = 255;            //
+        rate_of_return_board.color.b = 255;            //
+        rate_of_return_board.color.g = 255;            //
                                                      // position 구역에 들어갈 텍스트 색을 검은색으로 지정 
-        profits_board.color.r = 0;                   //
-        profits_board.color.b = 0;                   //
+        profits_board.color.r = 255;                   //
+        profits_board.color.b = 255;                   //
+        profits_board.color.g = 255;                   //
     }
     RenderPositionBoard(&buy_price_board);
     RenderPositionBoard(&liquidation_money_board);
@@ -191,6 +256,13 @@ void RenderBoard(Text *object)
     SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));    
 
     return;
+}
+
+void RenderPosPic(Entity *object)
+{
+    SDL_QueryTexture(object->texture, NULL, NULL, &(object->pos.w),
+                     &(object->pos.h));
+    SDL_RenderCopy(app.renderer, object->texture, NULL, &(object->pos));
 }
 
 void FixChart(void)

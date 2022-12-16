@@ -213,3 +213,4 @@ void GetBoardInfo(void)
 
     return;
 }
+

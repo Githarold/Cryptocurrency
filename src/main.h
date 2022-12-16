@@ -28,6 +28,8 @@ double left_money = 10000000.0;
 double coef;
 double max_min_percent = 3;
 double coef_chart, coef_chart_before;
+int draw_flag;                  // 1 : 포지션 종료한 상황 / 0 : 그 외 상황
+int draw_count;
 
 App app;
 Data coin_data;
@@ -36,6 +38,8 @@ Entity search;
 Entity chart[40];
 Entity chart_kkori[40];
 Entity chart_volume[40];
+Entity position_picture;
+Entity profit_picture;
 
 // 레이아웃 상의 position 박스에 쓰일 텍스트 
 

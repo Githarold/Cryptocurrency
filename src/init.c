@@ -56,12 +56,17 @@ void InitMemorySet(void) {
     memset(&chart_kkori, 0, sizeof(Entity));
     memset(&layout, 0, sizeof(Entity));
     memset(&search, 0, sizeof(Entity));
+    memset(&position_picture, 0, sizeof(Entity));
+    memset(&profit_picture, 0, sizeof(Entity));
     memset(&coin_price_board, 0, sizeof(Text));
     memset(&left_money_board, 0, sizeof(Text));
     memset(&buy_price_board, 0, sizeof(Text));
     memset(&liquidation_money_board, 0, sizeof(Text));
     memset(&rate_of_return_board, 0, sizeof(Text));
     memset(&profits_board, 0, sizeof(Text));
+    
+    
+    
 
     return;
 }
@@ -87,6 +92,7 @@ void InitChart(void) {
         chart_volume[i].pos.w = 20;
         chart_volume[i].pos.h = 0;
     }
+    
 
     return;
 }
@@ -104,55 +110,67 @@ void InitLayout(void)
 
 void InitBoard(void)
 {
-    coin_price_board.color.r = 0; 
-    coin_price_board.color.g = 0;
-    coin_price_board.color.b = 0;
+    coin_price_board.color.r = 255; 
+    coin_price_board.color.g = 255;
+    coin_price_board.color.b = 255;
     coin_price_board.color.a = 255;
     coin_price_board.pos.x = 550;
-    coin_price_board.pos.y = 11;
+    coin_price_board.pos.y = 9;
 
-    left_money_board.color.r = 0;     
-    left_money_board.color.g = 0;
-    left_money_board.color.b = 0;
+    left_money_board.color.r = 255;     
+    left_money_board.color.g = 255;
+    left_money_board.color.b = 255;
     left_money_board.color.a = 255;
     left_money_board.pos.x = 890;
-    left_money_board.pos.y = 169;
+    left_money_board.pos.y = 167;
 
-    buy_price_board.color.r = 0;
-    buy_price_board.color.g = 0;
-    buy_price_board.color.b = 0;
+    buy_price_board.color.r = 255;
+    buy_price_board.color.g = 255;
+    buy_price_board.color.b = 255;
     buy_price_board.color.a = 255;
     buy_price_board.pos.x = 865;
     buy_price_board.pos.y = 640;
     buy_price_board.pos.w = 80;
     buy_price_board.pos.h = 25;
 
-    liquidation_money_board.color.r = 0;
-    liquidation_money_board.color.g = 0;
-    liquidation_money_board.color.b = 0;
+    liquidation_money_board.color.r = 255;
+    liquidation_money_board.color.g = 255;
+    liquidation_money_board.color.b = 255;
     liquidation_money_board.color.a = 255;
     liquidation_money_board.pos.x = 865;
-    liquidation_money_board.pos.y = 675;
+    liquidation_money_board.pos.y = 678;
     liquidation_money_board.pos.w = 80;
     liquidation_money_board.pos.h = 25;
 
-    rate_of_return_board.color.r = 0;
-    rate_of_return_board.color.g = 0;
-    rate_of_return_board.color.b = 0;
+    rate_of_return_board.color.r = 255;
+    rate_of_return_board.color.g = 255;
+    rate_of_return_board.color.b = 255;
     rate_of_return_board.color.a = 255;
     rate_of_return_board.pos.x = 1019;
     rate_of_return_board.pos.y = 640;
     rate_of_return_board.pos.w = 70;
     rate_of_return_board.pos.h = 25;
 
-    profits_board.color.r = 0;
-    profits_board.color.g = 0;
-    profits_board.color.b = 0;
+    profits_board.color.r = 255;
+    profits_board.color.g = 255;
+    profits_board.color.b = 255;
     profits_board.color.a = 255;
     profits_board.pos.x = 1019;
-    profits_board.pos.y = 675;
+    profits_board.pos.y = 678;
     profits_board.pos.w = 70;
     profits_board.pos.h = 25;
+
+    position_picture.pos.x = 845;
+    position_picture.pos.y = 320;
+    position_picture.pos.w = 200;
+    position_picture.pos.h = 120;
+
+    // profit_picture.pos.x = SCREEN_WIDTH / 2;
+    // profit_picture.pos.y = SCREEN_HEIGHT / 2;
+    profit_picture.pos.x = 300;
+    profit_picture.pos.y = 300;
+    profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe0.png");
+
 
     return;
 }
