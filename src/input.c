@@ -139,9 +139,7 @@ void GetInput(void) {
                         {
                             draw_flag = 1;
                         }
-                        close_position();
-                        // DrawProfitPicture();
-                        
+                        close_position();                        
                     }
                 }
                 break;

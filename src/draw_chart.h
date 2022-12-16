@@ -18,6 +18,7 @@ extern double coef_chart, coef_chart_before;
 extern double rate_of_return;
 extern int draw_count;
 extern int draw_flag;
+extern double picture_percent;
 extern App app;
 extern Data coin_data;
 extern Entity layout;
@@ -146,9 +147,25 @@ void DrawPositionInfo(void);
 */
 void FixChart(void);
 
+/**
+ @brief 선택하는 포지션에 따른 이미지 렌더링
+ 사용자가 롱 포지션을 선택하면 우측 중단에 "가즈아" 라는 이미지가, 숏 포지션을 선택하면 "누가 가즈아를 외쳤는가" 라는 문구가 담긴 이미지가 렌더링된다.
+ @return 리턴 값 없음
+*/
 void DrawPositionPicture(void);
 
+/**
+ @brief 포지션 종료 후 수익률에 따른 이미지 선정 및 렌더링
+ flag가 on(1)일 때만 작동한다.
+ 포지션 종료 시 수익률에 따라 다른 이미지를 렌더링한다. 수익률이 -100%~-20%, -20% ~ -10%, -10% ~ 10%,  10% ~ 20%, 20% ~ 에 따라 출력하는 이미지가 달라진다. 
+ 렌더링의 경우 RenderPosPic(Entity *object) 를 호출한다. 시간이 지날수록 이미지를 투명도를 점점 높여서 화면에서 사라지게 하였다. 이는 draw_flag 변수를 사용하여 구현하였다. 
+ @return 리턴 값 없음
+*/
 void DrawProfitPicture(void);
 
+/**
+ @brief 이미지 렌더링
+ @return 리턴 값 없음
+*/
 void RenderPosPic(Entity *object);
 #endif

@@ -18,6 +18,7 @@ double buy_price;                  // 체결 가격
 double trade_money;                // position에 투입한 금액
 double rate_of_return;             // 수익률
 double liquidation_price;          // 청산 가격(배율에 따라 일정 수익률 이하로 떨어지면 투자금액 청산)
+extern double picture_percent;
 
 /* main.h에 정의된 전역 변수 사용 */
 extern short in_position_flag, short_long_flag;           // 0 : Short / 1 : Long
@@ -27,6 +28,7 @@ extern Text profits_board;                                // 수익금을 표시
 extern Text buy_price_board;                              // 체결 가격을 표시하기 위한 구조체
 extern Text rate_of_return_board;                         // 수익률을 표시하기 위한 구조체
 extern Text liquidation_money_board;                      // 청산 가격을 표시하기 위한 구조체
+
 
 /**
  @brief position에 들어갈 때의 정보들을 처리한다.

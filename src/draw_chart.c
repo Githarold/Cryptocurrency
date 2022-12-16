@@ -44,37 +44,37 @@ void checktime(void)
 
 void DefineChartHeight(void)
 {   
-    if(coin_data.trade_coef < coin_data.opening_coef)           // 시작가보다 현재가가 낮을 때 (음봉)
+    if(coin_data.trade_coef < coin_data.opening_coef)                                       // 시작가보다 현재가가 낮을 때 (음봉)
     {
-        chart[i].pos.y = 600 - coin_data.opening_coef;          // 높이 중심 300을 기준으로 대칭시킴
-                                                                // 음봉인 경우 시작가 > 현재가 이므로 시작가를 기준으로 막대를 표현할 사각형을 그려야함
+        chart[i].pos.y = 600 - coin_data.opening_coef;                                      // 높이 중심 300을 기준으로 대칭시킴
+                                                                                            // 음봉인 경우 시작가 > 현재가 이므로 시작가를 기준으로 막대를 표현할 사각형을 그려야함
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");                // 
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/greenline.png");      // 해당 가격, 거래량 봉의 색을 파란색으로 지정
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/green.png");         // 
-        coin_price_board.color.b = 225;                 // 우측 상단에 표시할 코인의 가격의 색을 파란색으로 지정                              
-        coin_price_board.color.r = 0;                   //
-        coin_price_board.color.g = 0;                   //
+        coin_price_board.color.b = 225;                                                     // 우측 상단에 표시할 코인의 가격의 색을 파란색으로 지정                              
+        coin_price_board.color.r = 0;                                                       //
+        coin_price_board.color.g = 0;                                                       //
     }
-    else if(coin_data.trade_coef > coin_data.opening_coef)      // 시작가보다 현재가가 높을 때 (양봉)
+    else if(coin_data.trade_coef > coin_data.opening_coef)                                  // 시작가보다 현재가가 높을 때 (양봉)
     {
-        chart[i].pos.y = 600 - coin_data.trade_coef;            // 높이 중심 300을 기준으로 대칭시킴
-                                                                // 양봉인 경우 시작가 < 현재가 이므로 현재가를 기준으로 막대를 표현할 사각형을 그려야함
+        chart[i].pos.y = 600 - coin_data.trade_coef;                                        // 높이 중심 300을 기준으로 대칭시킴
+                                                                                            // 양봉인 경우 시작가 < 현재가 이므로 현재가를 기준으로 막대를 표현할 사각형을 그려야함
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");                  //
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");        // 해당 가격, 거래량 봉의 색을 빨간색으로 지정
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");           //
-        coin_price_board.color.b = 0;                   // 우측 상단에 표시할 코인의 가격의 색을 빨간색으로 지정                              
-        coin_price_board.color.r = 225;                 //
-        coin_price_board.color.g = 0;                   //
+        coin_price_board.color.b = 0;                                                       // 우측 상단에 표시할 코인의 가격의 색을 빨간색으로 지정                              
+        coin_price_board.color.r = 225;                                                     //
+        coin_price_board.color.g = 0;                                                       //
     }
     else
     {
-        chart[i].pos.y = 600 - coin_data.trade_coef;            // 가격변동 없을 때 (차트상으로는 양봉으로 취급)
+        chart[i].pos.y = 600 - coin_data.trade_coef;                                        // 가격변동 없을 때 (차트상으로는 양봉으로 취급)
         chart[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
         chart_kkori[i].texture = IMG_LoadTexture(app.renderer, "./gfx/redline.png");
         chart_volume[i].texture = IMG_LoadTexture(app.renderer, "./gfx/red.png");
-        coin_price_board.color.b = 255;                   // 우측 상단에 표시할 코인의 가격의 색을 검은색으로 지정                              
-        coin_price_board.color.r = 255;                   //
-        coin_price_board.color.g = 255;                   //
+        coin_price_board.color.b = 255;                                                     // 우측 상단에 표시할 코인의 가격의 색을 흰색으로 지정                              
+        coin_price_board.color.r = 255;                                                     //
+        coin_price_board.color.g = 255;                                                     //
     }
 
     chart[i].pos.h = abs(round(coin_data.trade_coef - coin_data.opening_coef));         // 가격 막대 봉의 높이를 abs(현재가 - 시작가)로 지정
@@ -127,11 +127,11 @@ void DrawChart(void)
 
 void DrawPositionPicture(void)
 {
-    position_picture.pos.w = 200;
-    position_picture.pos.h = 120;
+    position_picture.pos.w = 200;                   // 렌더링할 이미지의 너비와 높이
+    position_picture.pos.h = 120;                   //
     if(short_long_flag)     // long
     {
-        position_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/long.png");
+        position_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/long.png");         
     }
     else                    // short
     {
@@ -142,37 +142,36 @@ void DrawPositionPicture(void)
 
 void DrawProfitPicture(void)
 {
-    if((rate_of_return > -10) && (rate_of_return < 10))
+    if((picture_percent > -10) && (picture_percent < 10))
     {
         profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe0.png");
     }
-    else if((rate_of_return > 10) && (rate_of_return < 20))
+    else if((picture_percent > 10) && (picture_percent < 20))
     {
         profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe+10.png");
     }
-    else if(rate_of_return > 20)
+    else if(picture_percent > 20)
     {
         profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe+20.png");
     }
-    else if((rate_of_return < -10) && (rate_of_return > -20))
+    else if((picture_percent < -10) && (picture_percent > -20))
     {
         profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe-10.png");
     }
-    else if(rate_of_return < -20)
+    else if(picture_percent < -20)
     {
         profit_picture.texture = IMG_LoadTexture(app.renderer, "./gfx/pepe-20.png");
     }
-    SDL_SetTextureAlphaMod(profit_picture.texture, 255 - draw_count);
-    SDL_SetTextureBlendMode(profit_picture.texture, SDL_BLENDMODE_BLEND);        
+    SDL_SetTextureAlphaMod(profit_picture.texture, 255 - draw_count);                   // 이미지의 알파값 설정
+    SDL_SetTextureBlendMode(profit_picture.texture, SDL_BLENDMODE_BLEND);               // 설정한 알파값을 투명도로 사용 
     RenderPosPic(&profit_picture);
-    draw_count = draw_count + 10;
+    draw_count = draw_count + 10;                                                       // flag가 on(1)인 동안 draw_count가 증가하며 투명도 증가 
 
-    if(draw_count == 250)
+    if(draw_count == 250)                                                               // draw_count가 250이 되면 flag가 off(0)되고 이미지 렌더링을 멈춤 
     {
         draw_flag = 0;
         draw_count = 0;
     }
-    printf("%d\n", draw_count);
     
     return;
 }
@@ -184,53 +183,53 @@ void DrawPositionInfo(void)
         if (short_long_flag)                         // Long 포지션의 경우 매수가 > 현재가 일때 손실 
         {
             rate_of_return_board.color.r = 0;        //
-            rate_of_return_board.color.b = 255;      //
-            rate_of_return_board.color.g = 0;      //
+            rate_of_return_board.color.b = 225;      //
+            rate_of_return_board.color.g = 0;        //
                                                      // position 구역에 들어갈 텍스트 색을 파란색으로 지정 
             profits_board.color.r = 0;               //
-            profits_board.color.b = 255;             //
-            profits_board.color.g = 0;             //
+            profits_board.color.b = 225;             //
+            profits_board.color.g = 0;               //
         }
         else                                         // Short 포지션의 경우 매수가 > 현재가 일때 수익 
         {
-            rate_of_return_board.color.r = 255;      // 
+            rate_of_return_board.color.r = 225;      // 
             rate_of_return_board.color.b = 0;        //
-            rate_of_return_board.color.g = 0;      //
+            rate_of_return_board.color.g = 0;        //
                                                      // position 구역에 들어갈 텍스트 색을 붉은색으로 지정 
-            profits_board.color.r = 255;             //
+            profits_board.color.r = 225;             //
             profits_board.color.b = 0;               //
-            profits_board.color.g = 0;      //
+            profits_board.color.g = 0;               //
         }
     }
     else if (buy_price < coin_data.trade_price)      // 매수가 < 현재가의 경우
     {
         if (short_long_flag)                         // Long 포지션의 경우 매수가 < 현재가 일때 수익 
         {
-            rate_of_return_board.color.r = 255;      //
+            rate_of_return_board.color.r = 225;      //
             rate_of_return_board.color.b = 0;        //
             rate_of_return_board.color.g = 0;        //
                                                      // position 구역에 들어갈 텍스트 색을 붉은색으로 지정 
-            profits_board.color.r = 255;             //
+            profits_board.color.r = 225;             //
             profits_board.color.b = 0;               //
             profits_board.color.g = 0;               //
         }
         else                                         // Short 포지션의 경우 매수가 < 현재가 일때 손실
         {
             rate_of_return_board.color.r = 0;        //
-            rate_of_return_board.color.b = 255;      //
-            rate_of_return_board.color.g = 0;      //
+            rate_of_return_board.color.b = 225;      //
+            rate_of_return_board.color.g = 0;        //
                                                      // position 구역에 들어갈 텍스트 색을 푸른색으로 지정 
             profits_board.color.r = 0;               //
-            profits_board.color.b = 255;             //
-            profits_board.color.g = 0;             //
+            profits_board.color.b = 225;             //
+            profits_board.color.g = 0;               //
         }
     }
-    else                                             // 현재가 = 매수가 인 경우 두 포지션 모두 손실이나 수익 없음
+    else                                               // 현재가 = 매수가 인 경우 두 포지션 모두 손실이나 수익 없음
     {
         rate_of_return_board.color.r = 255;            //
         rate_of_return_board.color.b = 255;            //
         rate_of_return_board.color.g = 255;            //
-                                                     // position 구역에 들어갈 텍스트 색을 검은색으로 지정 
+                                                       // position 구역에 들어갈 텍스트 색을 흰색으로 지정 
         profits_board.color.r = 255;                   //
         profits_board.color.b = 255;                   //
         profits_board.color.g = 255;                   //

@@ -28,8 +28,9 @@ double left_money = 10000000.0;
 double coef;
 double max_min_percent = 3;
 double coef_chart, coef_chart_before;
-int draw_flag;                  // 1 : 포지션 종료한 상황 / 0 : 그 외 상황
+int draw_flag;                               // 1 : 포지션 종료한 상황 / 0 : 그 외 상황
 int draw_count;
+double picture_percent;
 
 App app;
 Data coin_data;
