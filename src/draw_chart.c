@@ -266,7 +266,7 @@ void RenderPosPic(Entity *object)
 
 void FixChart(void)
 {
-    if(i == 28)
+    if(i == 38)
     {             
         for(int j = 0 ; j < 39 ; j++)
         {
@@ -278,6 +278,5 @@ void FixChart(void)
             chart_volume[j].pos.x -= 20;
         }
         i--;                                        // 더 이상 i가 증가하면 안 되므로 빼줌
-        printf("fix complete!!     i=%d\n", i);
     }
 }
