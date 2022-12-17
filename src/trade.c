@@ -30,7 +30,6 @@ void open_position(float trade_rate, int leverage)
 void close_position(void)
 {
     // 포지션 청산 시 잔고에 (투자금 + 수익금)을 더해줌. (0.1 * 배율)의 수수료 적용(Binance 선물거래 기준)
-    // DrawProfitPicture();
     picture_percent = rate_of_return;       // DrawProfitPicture에서 사용하기 위해 초기화 전 데이터 저장
     left_money += ((1 - 0.001 * leverage) * (trade_money + profits));
     

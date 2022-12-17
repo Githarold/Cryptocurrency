@@ -10,11 +10,11 @@ int main(void) {
     // 초기화
     InitMemorySet();    
     InitSDL();
-    InitSearchCoin();
     InitTTF();
-    InitLayout();
     InitChart();
     InitBoard();
+    InitLayout();
+    InitSearchCoin();
     make_url();
 
     ShowWindow();
